@@ -1,0 +1,5 @@
+=======================
+collective.fullcalendar
+=======================
+
+User documentation
