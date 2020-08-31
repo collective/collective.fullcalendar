@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from collective.fullcalendar.behaviors.fullcalendar import IFullcalendarMarker
-from collective.fullcalendar.testing import COLLECTIVE_FULLCALENDAR_INTEGRATION_TESTING  # noqa
-from plone.app.testing import setRoles
-from plone.app.testing import TEST_USER_ID
+from collective.fullcalendar.testing import \
+    COLLECTIVE_FULLCALENDAR_INTEGRATION_TESTING  # noqa
+from plone.app.testing import setRoles, TEST_USER_ID
 from plone.behavior.interfaces import IBehavior
 from zope.component import getUtility
 

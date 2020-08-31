@@ -1,0 +1,18 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="collective.fullcalendar">
+
+  -*- extra stuff goes here -*-
+
+  <browser:page
+    name="fullcalendar-view"
+    for="Products.CMFCore.interfaces.IFolderish"
+    class=".fullcalendar_view.FullcalendarView"
+    template="fullcalendar_view.pt"
+    permission="zope2.View"
+    />
+
+
+</configure>

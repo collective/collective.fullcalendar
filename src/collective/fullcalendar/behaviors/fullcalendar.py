@@ -2,20 +2,16 @@
 
 from collective.fullcalendar import _
 from plone import schema
+from plone.app.z3cform.widget import RelatedItemsFieldWidget
+from plone.autoform import directives
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.supermodel import model
 from Products.CMFPlone.utils import safe_hasattr
-from zope.component import adapter
-from zope.interface import Interface
-from zope.interface import implementer
-from zope.interface import provider
-
-from zope.schema.vocabulary import SimpleVocabulary
-from z3c.relationfield.schema import RelationChoice
-from plone.app.z3cform.widget import RelatedItemsFieldWidget
-from plone.autoform import directives
-
 from Products.Five.browser import BrowserView
+from z3c.relationfield.schema import RelationChoice
+from zope.component import adapter
+from zope.interface import implementer, Interface, provider
+from zope.schema.vocabulary import SimpleVocabulary
 
 
 class IFullcalendarMarker(Interface):
@@ -132,4 +128,3 @@ class Fullcalendar(object):
     @project.setter
     def project(self, value):
         self.context.project = value
-
