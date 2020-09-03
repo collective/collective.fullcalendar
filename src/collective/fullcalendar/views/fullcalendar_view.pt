@@ -6,8 +6,172 @@
       metal:use-macro="context/main_template/macros/master">
 <body>
   <metal:block fill-slot="content-core">
-      <h2 i18n:translate="">Sample View</h2>
-      <p tal:content="view/msg">this gets replaced</p>
+
+
+<!--
+<link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.3.0/main.min.css' rel='stylesheet' />
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.3.0/main.min.js'></script>
+-->
+<div id="calendar" />
+<div id="calendarEditArea" />
+<!--
+<iframe name="calendarTargetArea" />
+-->
+<a id="calendarAddLink" class="pat-plone-modal" href="/Plone/++add++Event?ajax_load=1"></a>
+<tal:block tal:repeat="event python:view.getEvents()">
+  <a class="pat-plone-modal"
+     tal:attributes="id python:'editlink-'+event['uid'];
+                     href python:event['url']+'/@@edit'">
+  </a>
+</tal:block>
+<link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.3.0/main.css' rel='stylesheet' />
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.3.0/main.js'></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+/*
+   document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var cal
+Verkauf und Versand durch Amazon.endar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'dayGridMonth'
+        });
+        calendar.render();
+  });
+*/
+
+  var calendarElement = document.getElementById('calendar');
+  var calendarEditArea = $('#calendarEditArea');
+  var parentURL = '<tal:block tal:content="structure python:context.aq_parent.absolute_url()" />';
+
+  var calendar = new FullCalendar.Calendar(calendarElement, {
+      slotDuration: '<tal:block tal:content="structure python:view.getSlotMinutes()" />',
+      allDaySlot: <tal:block tal:content="structure python:view.getAllDay()" />,
+      initialView: '<tal:block tal:content="structure python:context.defaultCalendarView" />',
+      locale: '<tal:block tal:content="structure python:context.Language()" />',
+      firstDay: <tal:block tal:content="structure python:view.getFirstDay()" />,
+      headerToolbar: {
+          left: '<tal:block tal:content="structure python:context.headerLeft" />',
+          center: 'title',
+          right: '<tal:block tal:content="structure python:context.headerRight" />',
+      },
+      weekends: <tal:block tal:content="structure python:view.getWeekends()" />,
+      scrollTime: '<tal:block tal:content="structure python:view.getFirstHour()" />',
+      slotMinTime: '<tal:block tal:content="structure python:view.getMinTime()" />',
+      slotMaxTime: '<tal:block tal:content="structure python:view.getMaxTime()" />',
+      height: <tal:block tal:content="structure python:context.calendarHeight" />,
+      editable: <tal:block tal:content="structure python:view.getEditable()" />,
+      selectable: <tal:block tal:content="structure python:view.getEditable()" />,
+      events: <tal:block tal:content="structure python:view.renderEvents()" />,
+      // Auswahl eines Bereichs: Bei Monatsansicht werden mehrtägige Termine erstellt, ansonsten Termin in Bereichsgröße
+      select: function(info) {
+          start = info.startStr;
+          end = info.endStr;
+          $('a#calendarAddLink').click();
+          //console.log(start);
+          //console.log(end);
+          //$('#formfield-form-widgets-IEventBasic-start input')
+          //calendarEditArea.load(parentURL+'/++add++Event?ajax_load=1',function(responseTxt, statusTxt, xhr){
+              //if(statusTxt == "success")
+              //    alert("External content loaded successfully!");
+              //if(statusTxt == "error")
+              //   alert("Error: " + xhr.status + ": " + xhr.statusText);
+              //$('#form').attr('target','calendarTargetArea');
+              //$('#form').on('submit',function(){$('#form').remove()});
+          // });
+      },
+      // Klick auf einen Slot. Bei Monatsansicht wird ganztägiger Termin erstellt, ansonsten Termin in Slotgröße
+      dateClick: function(info) {
+          start = info.startStr;
+          end = info.endStr;
+          $('a#calendarAddLink').click();
+      },
+      // Klick auf einen Termin
+      eventClick: function(info) {
+          $('#editlink-'+info.event.id).click();
+          //alert('Event: ' + info.event.title);
+          //alert('Event: ' + );
+          //alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
+          //alert('View: ' + info.view.type);
+          // change the border color just for fun
+          //info.el.style.borderColor = 'red';
+      },
+      // Vergrößern/Verkleinern eines Termins
+      eventResize: function(info) {
+          alert(info.event.title + " end is now " + info.event.end.toISOString());
+          if (!confirm("is this okay?")) {
+              info.revert();
+          }
+      },
+      // Verschieben eines Termins
+      eventDrop: function(info) {
+          alert(info.event.title + " was dropped on " + info.event.start.toISOString());
+          if (!confirm("Are you sure about this change?")) {
+              info.revert();
+          }
+      }
+  });
+
+  calendar.render();
+});
+
+/*
+			$('.plone-modal-dialog.login input.loginbtn').click(function () {
+				$('.plone-modal-dialog.login').find('.portalMessage.error').remove();
+				let login_url = $(this).parent().parent().attr('action');
+				let ac_name = $('#__ac_name').val();
+				let ac_cred = $('#__ac_password').val();
+				let stay_logged_in = ($('#stay_logged_in:checked').length > 0) ? 'on' : 'off';
+				let submit = $(this).val();
+				$(this).attr('disabled', true);
+				$('<div class="lds-ring"><div></div><div></div><div></div><div></div></div>').insertBefore('.loginbtn');
+				$.ajax({
+					method: 'POST',
+					url: login_url,
+					data: {
+						came_from: window.location.href,
+						next: '',
+						ajax_load: '',
+						ajax_include_head: '',
+						target: '',
+						mail_password_url: '',
+						join_url: '',
+						'form.submitted': 1,
+						js_enabled: 0,
+						cookies_enabled: '',
+						login_name: '',
+						pwd_empty: 0,
+						__ac_name: ac_name,
+						__ac_password: ac_cred,
+						stay_logged_in: stay_logged_in,
+                        klingspor_redirect: 1,
+						submit: submit
+					},
+				}).done(function (msg) {
+					if (msg.indexOf('Utilview') !== -1) {
+						$.ajax({
+							method: 'GET',
+							url: portal_url + '/loginview?method=loggedIn',
+						})
+						location.reload();
+					}
+					else {
+						$('.plone-modal-dialog.login input.loginbtn').attr('disabled', false);
+						let html = $.parseHTML(msg);
+						let error_element = $(html).find('.portalMessage.error');
+						error_element.insertAfter('.plone-modal-header');
+						error_element.css('margin-top', 0);
+						$('.lds-ring').remove();
+					}
+
+				});
+			});
+		}
+	}
+*/
+</script>
+
+
   </metal:block>
 </body>
 </html>

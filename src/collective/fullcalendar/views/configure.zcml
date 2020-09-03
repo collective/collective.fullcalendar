@@ -8,11 +8,10 @@
 
   <browser:page
     name="fullcalendar-view"
-    for="Products.CMFCore.interfaces.IFolderish"
+    for="plone.app.contenttypes.interfaces.ICollection"
     class=".fullcalendar_view.FullcalendarView"
     template="fullcalendar_view.pt"
     permission="zope2.View"
     />
-
 
 </configure>
