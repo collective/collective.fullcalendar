@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
 from collective.fullcalendar import _
-from Products.Five.browser import BrowserView
-from plone import api
-
 # from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from DateTime import DateTime
+from plone import api
+from Products.Five.browser import BrowserView
+
 
 class FullcalendarView(BrowserView):
     # If you want to define a template here, please remove the template from
@@ -121,5 +121,3 @@ class FullcalendarView(BrowserView):
             return 'true'
         else:
             return 'false'
-
-

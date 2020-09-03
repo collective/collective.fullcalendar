@@ -7,6 +7,14 @@
   -*- extra stuff goes here -*-
 
   <browser:page
+    name="edit-event"
+    for="Products.CMFCore.interfaces.IFolderish"
+    class=".edit_event.EditEvent"
+    template="edit_event.pt"
+    permission="zope2.View"
+    />
+
+  <browser:page
     name="fullcalendar-view"
     for="plone.app.contenttypes.interfaces.ICollection"
     class=".fullcalendar_view.FullcalendarView"

@@ -11,8 +11,8 @@ from Products.Five.browser import BrowserView
 from z3c.relationfield.schema import RelationChoice
 from zope.component import adapter
 from zope.interface import implementer, Interface, provider
-from zope.schema.vocabulary import SimpleTerm
-from zope.schema.vocabulary import SimpleVocabulary
+from zope.schema.vocabulary import SimpleTerm, SimpleVocabulary
+
 
 class IFullcalendarMarker(Interface):
     pass
@@ -242,4 +242,3 @@ class Fullcalendar(object):
     @caleditable.setter
     def caleditable(self, value):
         self.context.caleditable = value
-
