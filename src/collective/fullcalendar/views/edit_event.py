@@ -13,6 +13,6 @@ class EditEvent(BrowserView):
     # template = ViewPageTemplateFile('edit_event.pt')
 
     def __call__(self):
-        # Implement your own actions:
-        self.msg = _(u'A small message')
+        
+
         return self.index()

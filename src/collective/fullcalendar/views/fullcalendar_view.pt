@@ -102,6 +102,7 @@ Verkauf und Versand durch Amazon.endar = new FullCalendar.Calendar(calendarEl, {
           if (!confirm("is this okay?")) {
               info.revert();
           }
+          window.location.href = "@@edit-event";
       },
       // Verschieben eines Termins
       eventDrop: function(info) {

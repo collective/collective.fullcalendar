@@ -8,7 +8,7 @@
 
   <browser:page
     name="edit-event"
-    for="Products.CMFCore.interfaces.IFolderish"
+    for="*"
     class=".edit_event.EditEvent"
     template="edit_event.pt"
     permission="zope2.View"
