@@ -45,6 +45,7 @@ Verkauf und Versand durch Amazon.endar = new FullCalendar.Calendar(calendarEl, {
   var parentURL = '<tal:block tal:content="structure python:context.aq_parent.absolute_url()" />';
 
   var calendar = new FullCalendar.Calendar(calendarElement, {
+      timeZone: 'UTC',
       slotDuration: '<tal:block tal:content="structure python:view.getSlotMinutes()" />',
       allDaySlot: <tal:block tal:content="structure python:view.getAllDay()" />,
       initialView: '<tal:block tal:content="structure python:context.defaultCalendarView" />',
@@ -98,16 +99,18 @@ Verkauf und Versand durch Amazon.endar = new FullCalendar.Calendar(calendarEl, {
       },
       // Vergrößern/Verkleinern eines Termins
       eventResize: function(info) {
-          alert(info.event.title + " end is now " + info.event.end.toISOString());
-          if (!confirm("is this okay?")) {
+          //alert(info.event.title + " end is now " + info.event.end.toISOString());
+          if (confirm("is this okay?")) {
+              window.location.href = "@@edit-event?method=resize&uid="+info.event.id+"&new_end="+info.event.end.toISOString();
+          } else {
               info.revert();
           }
-          window.location.href = "@@edit-event";
       },
       // Verschieben eines Termins
       eventDrop: function(info) {
-          alert(info.event.title + " was dropped on " + info.event.start.toISOString());
-          if (!confirm("Are you sure about this change?")) {
+          if (confirm("is this okay?")) {
+              window.location.href = "@@edit-event?method=move&uid="+info.event.id+"&new_start="+info.event.start.toISOString()+"&new_end="+info.event.end.toISOString();
+          } else {
               info.revert();
           }
       }

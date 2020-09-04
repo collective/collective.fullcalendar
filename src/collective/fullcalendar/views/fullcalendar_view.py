@@ -39,8 +39,8 @@ class FullcalendarView(BrowserView):
             result = result+'{\n'
             result = result+'  id: \''+event['uid']+'\',\n'
             result = result+'  title: \''+event['title']+'\',\n'
-            result = result+'  start: \''+str(event['start'])+'\',\n'
-            result = result+'  end: \''+str(event['end'])+'\',\n'
+            result = result+'  start: \''+event['start'].strftime('%Y-%m-%d %H:%M:%S')+'\',\n'
+            result = result+'  end: \''+event['end'].strftime('%Y-%m-%d %H:%M:%S')+'\',\n'
             if not caleditable:
                 result = result+'  url: \''+event['url']+'\'\n'
             result = result+'},\n'
