@@ -60,7 +60,9 @@ Verkauf und Versand durch Amazon.endar = new FullCalendar.Calendar(calendarEl, {
       scrollTime: '<tal:block tal:content="structure python:view.getFirstHour()" />',
       slotMinTime: '<tal:block tal:content="structure python:view.getMinTime()" />',
       slotMaxTime: '<tal:block tal:content="structure python:view.getMaxTime()" />',
+     <tal:block tal:condition="python:context.calendarHeight">
       height: <tal:block tal:content="structure python:context.calendarHeight" />,
+     </tal:block>
       editable: <tal:block tal:content="structure python:view.getEditable()" />,
       selectable: <tal:block tal:content="structure python:view.getEditable()" />,
       events: <tal:block tal:content="structure python:view.renderEvents()" />,
