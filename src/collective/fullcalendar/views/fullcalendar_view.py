@@ -5,6 +5,8 @@ from collective.fullcalendar import _
 from DateTime import DateTime
 from plone import api
 from Products.Five.browser import BrowserView
+from plone.app.contenttypes.content import Collection
+from plone.app.contenttypes.content import Folder
 
 
 class FullcalendarView(BrowserView):
@@ -17,7 +19,11 @@ class FullcalendarView(BrowserView):
         return self.index()
 
     def getEvents(self):
-        events = self.context.results()
+        typ = type(self.context.aq_base)
+        if typ == Collection:
+          events = self.context.results()
+        elif typ == Folder:
+          events = api.content.find(context=self.context,portal_type='Event')
         results = []
         for event in events:
             obj = event.getObject()
