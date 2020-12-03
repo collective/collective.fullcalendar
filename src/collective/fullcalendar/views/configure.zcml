@@ -21,5 +21,12 @@
     template="fullcalendar_view.pt"
     permission="zope2.View"
     />
+  <browser:page
+    name="fullcalendar-view"
+    for="plone.app.contenttypes.interfaces.IFolder"
+    class=".fullcalendar_view.FullcalendarView"
+    template="fullcalendar_view.pt"
+    permission="zope2.View"
+    />
 
 </configure>
