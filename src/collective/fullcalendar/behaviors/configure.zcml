@@ -16,6 +16,7 @@
         provides=".fullcalendar.IFullcalendar"
         factory=".fullcalendar.Fullcalendar"
         marker=".fullcalendar.IFullcalendarMarker"
+        for="plone.dexterity.interfaces.IDexterityContent"
         />
 
 </configure>
