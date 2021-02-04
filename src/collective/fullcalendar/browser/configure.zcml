@@ -18,4 +18,25 @@
       directory="static"
       />
 
+  <browser:page
+      for="plone.folder.interfaces.IFolder"
+      name="fullcalender_settings"
+      class=".fullcalendar.IFullcalenderSettingsFormView"
+      allowed_attributes="enable
+                          disable"
+      permission="cmf.AddPortalContent"
+      layer="..interfaces.IBrowserLayer"
+      />
+
+  <browser:page
+      for="*"
+      name="fullcalender_tool"
+      class=".fullcalendar.IFullcalenderTool"
+      allowed_attributes="enabled
+                          available
+                          available_disabled"
+      permission="zope2.View"
+      layer="..interfaces.IBrowserLayer"
+      />
+
 </configure>
