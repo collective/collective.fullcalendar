@@ -6,3 +6,7 @@ from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 
 class ICollectiveFullcalendarLayer(IDefaultBrowserLayer):
     """Marker interface that defines a browser layer."""
+
+
+class IFullcalenderEnabled(IDefaultBrowserLayer):
+    """Marker interface for Fullcalender possibilities."""
