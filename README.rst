@@ -54,7 +54,7 @@ Translations
 
 This product has been translated into
 
-- Klingon (thanks, K'Plai)
+- comming soon
 
 
 Installation
@@ -78,7 +78,7 @@ Contribute
 
 - Issue Tracker: https://github.com/collective/collective.fullcalendar/issues
 - Source Code: https://github.com/collective/collective.fullcalendar
-- Documentation: https://docs.plone.org/foo/bar
+- Documentation: https://github.com/collective/collective.fullcalendar
 
 
 Support
