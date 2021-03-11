@@ -1,0 +1,93 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2021-03-11 16:10+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: Janina Hard <janina.hard@werkbank.de>\n"
+"Language-Team: Werkbank GmbH <admin@werkbank.de>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: de\n"
+"Language-Name: German\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: collective.fullcalendar\n"
+
+msgid "label_slot_length"
+msgstr "Länge des Zeitfensters"
+
+msgid "help_slot_length"
+msgstr "Länge des Zeitfensters in Minuten"
+
+msgid "label_allDay"
+msgstr "Ganzer Tag"
+
+msgid "help_allDay"
+msgstr "Zeige 'Ganzer Tag' Option für timeGridWeek-View"
+
+msgid "label_defaultCalendarView"
+msgstr "Standard-Ansicht"
+
+msgid "help_defaultCalendarView"
+msgstr "Standard View"
+
+msgid "label_headerLeft"
+msgstr "Kopfbereich links"
+
+msgid "help_headerLeft"
+msgstr "Mögliche Werte: title, prev, next, prevYear, nextYear, today, dayGridMonth, timeGridWeek, listWeek, dayGridWeek"
+
+msgid "label_headerRight"
+msgstr "Kopfbereich rechts"
+
+msgid "help_headerRight"
+msgstr "Mögliche Werte: title, prev, next, prevYear, nextYear, today, dayGridMonth, timeGridWeek, listWeek, dayGridWeek"
+
+msgid "label_weekends"
+msgstr "Wochenenden anzeigen"
+
+msgid "help_weekends"
+msgstr "Wochenenden anzeigen"
+
+msgid "label_firstDay"
+msgstr "Erster Wochentag"
+
+msgid "help_firstDay"
+msgstr "Erster Wochentag"
+
+msgid "label_firstHour"
+msgstr "Erste angezeigte Stunde"
+
+msgid "help_firstHour"
+msgstr "Legen Sie die anfängliche Scrollposition der Kalender-Tagesansicht fest (eine Zahl zwischen 0 und 23). Wenn vor dieser Zahl ein '+' oder '-' steht, wird die Zahl mit der aktuellen Zeit addiert bzw. substrahiert."
+
+msgid "label_minTime"
+msgstr "Erste sichtbare Stunde"
+
+msgid "help_minTime"
+msgstr "Wählen Sie die erste sichtbare Stunde des Kalenders (z.B. \'5\' oder \'5:30\')."
+
+msgid "label_maxTime"
+msgstr "Letzte sichtbare Stunde"
+
+msgid "help_maxTime"
+msgstr "Wählen Sie die letzte sichtbare Stunde des Kalenders (z.B. \'5\' oder \'5:30\')."
+
+msgid "label_target_folder"
+msgstr "Zielordner für neue Termine"
+
+msgid "help_target_folder"
+msgstr "Zielordner für neue Termine"
+
+msgid "label_calendarHeight"
+msgstr "Kalender Höhe"
+
+msgid "help_calendarHeight"
+msgstr "Kalender Höhe in Pixeln"
+
+msgid "label_caleditable"
+msgstr "Kalender bearbeitbar"
+
+msgid "help_caleditable"
+msgstr "Aktivieren Sie dieses Kontrollkästchen, wenn die Ereignisse im Kalender bearbeitet werden sollen."
