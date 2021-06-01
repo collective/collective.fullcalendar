@@ -10,12 +10,15 @@
     <div id="calendar" />
     <div id="calendarEditArea" />
 
-    <a id="calendarAddLink" class="pat-plone-modal" href="/Plone/++add++Event?ajax_load=1"></a>
-    <tal:block tal:repeat="event python:view.getEvents()">
-    <a class="pat-plone-modal"
-        tal:attributes="id python:'editlink-'+event['uid'];
-                        href python:event['url']+'/@@edit'">
-    </a>
+    <tal:block tal:replace="nothing">
+        Modal throws error, as long as not fixed it will stay out of the code
+        <a id="calendarAddLink" class="pat-plone-modal" href="/Plone/++add++Event?ajax_load=1"></a>
+        <tal:block tal:repeat="event python:view._get_events()">
+        <a class="pat-plone-modal"
+            tal:attributes="id python:'editlink-'+event['id'];
+                            href python:event['url']+'/@@edit'">
+        </a>
+        </tal:block>
     </tal:block>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -26,26 +29,26 @@
 
         var calendar = new FullCalendar.Calendar(calendarElement, {
             timeZone: 'UTC',
-            slotDuration: '<tal:block tal:content="structure python:view.getSlotMinutes()" />',
-            allDaySlot: <tal:block tal:content="structure python:view.getAllDay()" />,
+            slotDuration: '<tal:block tal:content="structure python:view.get_slot_minutes()" />',
+            allDaySlot: <tal:block tal:content="structure python:view.get_all_day()" />,
             initialView: '<tal:block tal:content="structure python:context.defaultCalendarView" />',
             locale: '<tal:block tal:content="python:view.current_language()" />',
-            firstDay: <tal:block tal:content="structure python:view.getFirstDay()" />,
+            firstDay: <tal:block tal:content="structure python:view.get_first_day()" />,
             headerToolbar: {
                 left: '<tal:block tal:content="structure python:context.headerLeft" />',
                 center: 'title',
                 right: '<tal:block tal:content="structure python:context.headerRight" />',
             },
-            weekends: <tal:block tal:content="structure python:view.getWeekends()" />,
-            scrollTime: '<tal:block tal:content="structure python:view.getFirstHour()" />',
-            slotMinTime: '<tal:block tal:content="structure python:view.getMinTime()" />',
-            slotMaxTime: '<tal:block tal:content="structure python:view.getMaxTime()" />',
+            weekends: <tal:block tal:content="structure python:view.get_weekends()" />,
+            scrollTime: '<tal:block tal:content="structure python:view.get_first_hour()" />',
+            slotMinTime: '<tal:block tal:content="structure python:view.get_min_time()" />',
+            slotMaxTime: '<tal:block tal:content="structure python:view.get_max_time()" />',
             <tal:block tal:condition="python:context.calendarHeight">
             height: <tal:block tal:content="structure python:context.calendarHeight" />,
             </tal:block>
-            editable: <tal:block tal:content="structure python:view.getEditable()" />,
-            selectable: <tal:block tal:content="structure python:view.getEditable()" />,
-            events: <tal:block tal:content="structure python:view.renderEvents()" />,
+            editable: <tal:block tal:content="structure python:view.get_editable()" />,
+            selectable: <tal:block tal:content="structure python:view.get_editable()" />,
+            events: <tal:block tal:content="structure python:view.render_events()" />,
             // Auswahl eines Bereichs: Bei Monatsansicht werden mehrtägige Termine erstellt, ansonsten Termin in Bereichsgröße
             select: function(info) {
                 start = info.startStr;

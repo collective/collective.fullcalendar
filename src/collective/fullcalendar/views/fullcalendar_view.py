@@ -7,51 +7,48 @@ from Products.Five.browser import BrowserView
 from plone.app.contenttypes.content import Collection
 from plone.app.contenttypes.content import Folder
 
+# Import existing method for getting events
+from plone.app.event.base import get_events
+
+# Import JSON to use dumps()
+import json
+
 
 class FullcalendarView(BrowserView):
     def __call__(self):
         return self.index()
 
-    def getEvents(self):
+    def _get_events(self):
         typ = type(self.context.aq_base)
         if typ == Collection:
             events = self.context.results()
         elif typ == Folder:
-            events = api.content.find(context=self.context, portal_type='Event')
+            events = get_events(self.context)
         results = []
         for event in events:
             obj = event.getObject()
             result = {}
-            result['uid'] = obj.UID()
+            result['id'] = obj.UID()
             result['title'] = obj.Title()
-            result['start'] = obj.start
-            result['end'] = obj.end
+            result['start'] = obj.start.strftime('%Y-%m-%d %H:%M:%S')
+            result['end'] = obj.end.strftime('%Y-%m-%d %H:%M:%S')
             result['url'] = obj.absolute_url()
             results.append(result)
         return results
 
-    def renderEvents(self):
-        events = self.getEvents()
-        caleditable = self.context.caleditable
-        result = ''
-        result = result + '[\n'
-        for event in events:
-            result = result + '{\n'
-            result = result + '  id: \'' + event['uid'] + '\',\n'
-            result = result + '  title: \'' + event['title'] + '\',\n'
-            result = result + '  start: \'' + event['start'].strftime('%Y-%m-%d %H:%M:%S') + '\',\n'
-            result = result + '  end: \'' + event['end'].strftime('%Y-%m-%d %H:%M:%S') + '\',\n'
-            if not caleditable:
-                result = result + '  url: \'' + event['url'] + '\'\n'
-            result = result + '},\n'
-        result = result + ']\n'
+    def render_events(self):
+        events = self._get_events()
+        # caleditable = self.context.caleditable
+        result = json.dumps(events)
+        # if not caleditable:
+        #     result = result + '  url: \'' + event['url'] + '\'\n'
         return result
 
-    def getFirstDay(self):
+    def get_first_day(self):
         firstDay = self.context.firstDay
         return firstDay
 
-    def getSlotMinutes(self):
+    def get_slot_minutes(self):
         slotMinutes = self.context.slotMinutes
         if slotMinutes < 1:
             result = '00:01:00'
@@ -63,19 +60,19 @@ class FullcalendarView(BrowserView):
             result = '01:00:00'
         return result
 
-    def getAllDay(self):
+    def get_all_day(self):
         if self.context.allDay:
             return 'true'
         else:
             return 'false'
 
-    def getWeekends(self):
+    def get_weekends(self):
         if self.context.weekends:
             return 'true'
         else:
             return 'false'
 
-    def getFirstHour(self):
+    def get_first_hour(self):
         firstHour = self.context.firstHour
         firstHourInt = int(firstHour)
         if '+' in firstHour or '-' in firstHour:  # relative to now
@@ -94,7 +91,7 @@ class FullcalendarView(BrowserView):
                 result = str(firstHourInt) + ':00:00'
         return result
 
-    def getTime(self, time):
+    def get_time(self, time):
         if time.isdigit():  # Volle Stunde
             timeInt = int(time)
             if timeInt < 10:
@@ -108,15 +105,15 @@ class FullcalendarView(BrowserView):
                 result = time
         return result
 
-    def getMinTime(self):
-        minTime = self.getTime(self.context.minTime)
+    def get_min_time(self):
+        minTime = self.get_time(self.context.minTime)
         return minTime
 
-    def getMaxTime(self):
-        maxTime = self.getTime(self.context.maxTime)
+    def get_max_time(self):
+        maxTime = self.get_time(self.context.maxTime)
         return maxTime
 
-    def getEditable(self):
+    def get_editable(self):
         if self.context.caleditable:
             return 'true'
         else:
