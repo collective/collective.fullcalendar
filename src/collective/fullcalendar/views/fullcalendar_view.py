@@ -31,22 +31,24 @@ class FullcalendarView(BrowserView):
                 obj = event.getObject()
             except AttributeError:
                 obj = event
+            caleditable = self.context.caleditable
             result = {}
             result['id'] = obj.UID()
             result['title'] = obj.Title()
             result['start'] = obj.start.strftime('%Y-%m-%d %H:%M:%S')
             result['end'] = obj.end.strftime('%Y-%m-%d %H:%M:%S')
-            result['url'] = obj.absolute_url()
+            if caleditable:
+                result['url'] = obj.absolute_url()
             results.append(result)
         return results
 
-    def render_events(self):
-        events = self._get_events()
-        # caleditable = self.context.caleditable
-        result = json.dumps(events)
-        # if not caleditable:
-        #     result = result + '  url: \'' + event['url'] + '\'\n'
-        return result
+    # def render_events(self):
+    #     events = self._get_events()
+    #     # caleditable = self.context.caleditable
+    #     result = json.dumps(events)
+    #     # if not caleditable:
+    #     #     result = result + '  url: \'' + event['url'] + '\'\n'
+    #     return result
 
     def get_first_day(self):
         firstDay = self.context.firstDay
@@ -129,24 +131,24 @@ class FullcalendarView(BrowserView):
 
     def calendar_config(self):
         configuration = {
-            'timeZone': 'UTC',
-            'slotDuration': self.get_slot_minutes(),
-            'allDaySlot': self.get_all_day(),
-            'initialView': self.context.defaultCalendarView,
-            'locale': self.current_language(),
-            'firstDay': self.get_first_day(),
-            'headerToolbar': {
-                'left': self.context.headerLeft,
-                'center': 'title',
-                'right': self.context.headerRight,
+            "timeZone": "UTC",
+            "slotDuration": self.get_slot_minutes(),
+            "allDaySlot": self.get_all_day(),
+            "initialView": self.context.defaultCalendarView,
+            "locale": self.current_language(),
+            "firstDay": self.get_first_day(),
+            "headerToolbar": {
+                "left": self.context.headerLeft,
+                "center": "title",
+                "right": self.context.headerRight,
             },
-            'weekends': self.get_weekends(),
-            'scrollTime': self.get_first_hour(),
-            'slotMinTime': self.get_min_time(),
-            'slotMaxTime': self.get_max_time(),
-            'height': self.context.calendarHeight,
-            'editable': self.get_editable(),
-            'selectable': self.get_editable(),
-            'events': self.render_events(),
+            "weekends": self.get_weekends(),
+            "scrollTime": self.get_first_hour(),
+            "slotMinTime": self.get_min_time(),
+            "slotMaxTime": self.get_max_time(),
+            "height": self.context.calendarHeight if self.context.calendarHeight else 750,
+            "editable": self.get_editable(),
+            "selectable": self.get_editable(),
+            "events": self._get_events(),
         }
         return configuration
