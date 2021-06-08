@@ -9,6 +9,7 @@ from plone.app.contenttypes.content import Folder
 
 # Import existing method for getting events
 from plone.app.event.base import get_events
+from plone.app.event.base import RET_MODE_OBJECTS
 
 # Import JSON to use dumps()
 import json
@@ -23,10 +24,13 @@ class FullcalendarView(BrowserView):
         if typ == Collection:
             events = self.context.results()
         elif typ == Folder:
-            events = get_events(self.context)
+            events = get_events(self.context, ret_mode=RET_MODE_OBJECTS, expand=True)
         results = []
         for event in events:
-            obj = event.getObject()
+            try:
+                obj = event.getObject()
+            except AttributeError:
+                obj = event
             result = {}
             result['id'] = obj.UID()
             result['title'] = obj.Title()
@@ -122,3 +126,27 @@ class FullcalendarView(BrowserView):
     def current_language(self):
         lang = api.portal.get_current_language()
         return lang
+
+    def calendar_config(self):
+        configuration = {
+            'timeZone': 'UTC',
+            'slotDuration': self.get_slot_minutes(),
+            'allDaySlot': self.get_all_day(),
+            'initialView': self.context.defaultCalendarView,
+            'locale': self.current_language(),
+            'firstDay': self.get_first_day(),
+            'headerToolbar': {
+                'left': self.context.headerLeft,
+                'center': 'title',
+                'right': self.context.headerRight,
+            },
+            'weekends': self.get_weekends(),
+            'scrollTime': self.get_first_hour(),
+            'slotMinTime': self.get_min_time(),
+            'slotMaxTime': self.get_max_time(),
+            'height': self.context.calendarHeight,
+            'editable': self.get_editable(),
+            'selectable': self.get_editable(),
+            'events': self.render_events(),
+        }
+        return configuration
