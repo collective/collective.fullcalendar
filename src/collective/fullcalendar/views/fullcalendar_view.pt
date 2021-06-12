@@ -70,7 +70,7 @@
             // Vergrößern/Verkleinern eines Termins
             calendar.on('eventResize', function(info) {
                 //alert(info.event.title + " end is now " + info.event.end.toISOString());
-                if (confirm("is this okay?")) {
+                if (confirm("Do you want to change the event?")) {
                     window.location.href = "@@edit-event?method=resize&uid="+info.event.id+"&new_end="+info.event.end.toISOString();
                 } else {
                     info.revert();
@@ -79,7 +79,7 @@
             
             // Verschieben eines Termins
             calendar.on('eventDrop', function(info) {
-                if (confirm("is this okay?")) {
+                if (confirm("Do you want to change the event?")) {
                     window.location.href = "@@edit-event?method=move&uid="+info.event.id+"&new_start="+info.event.start.toISOString()+"&new_end="+info.event.end.toISOString();
                 } else {
                     info.revert();
