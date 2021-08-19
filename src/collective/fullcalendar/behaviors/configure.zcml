@@ -9,7 +9,7 @@
 
     <!-- -*- extra stuff goes here -*- -->
 
-    <plone:behavior
+    <!--<plone:behavior
         name="collective.fullcalendar.fullcalendar"
         title="Fullcalendar"
         description="Fullcalendar"
@@ -17,6 +17,6 @@
         factory=".fullcalendar.Fullcalendar"
         marker=".fullcalendar.IFullcalendarMarker"
         for="plone.dexterity.interfaces.IDexterityContent"
-        />
+        />-->
 
 </configure>

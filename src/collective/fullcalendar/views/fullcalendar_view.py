@@ -7,6 +7,8 @@ from Products.Five.browser import BrowserView
 from plone.app.contenttypes.content import Collection
 from plone.app.contenttypes.content import Folder
 
+from collective.fullcalendar.browser.fullcalendar import IIFullcalenderSettings
+
 # Import existing method for getting events
 from plone.app.event.base import get_events
 from plone.app.event.base import RET_MODE_OBJECTS
@@ -19,7 +21,12 @@ class FullcalendarView(BrowserView):
     def __call__(self):
         return self.index()
 
+    def get_settings(self):
+        import pdb; pdb.set_trace()
+        return IIFullcalenderSettings(self.context)._data
+
     def _get_events(self):
+        settings = self.get_settings()
         typ = type(self.context.aq_base)
         if typ == Collection:
             events = self.context.results()
@@ -31,7 +38,7 @@ class FullcalendarView(BrowserView):
                 obj = event.getObject()
             except AttributeError:
                 obj = event
-            caleditable = self.context.caleditable
+            caleditable = settings.get('caleditable')
             result = {}
             result['id'] = obj.UID()
             result['title'] = obj.Title()
@@ -43,19 +50,17 @@ class FullcalendarView(BrowserView):
         return results
 
     # def render_events(self):
+    #     settings = self.get_settings()
     #     events = self._get_events()
-    #     # caleditable = self.context.caleditable
+    #     # caleditable = settings.caleditable
     #     result = json.dumps(events)
     #     # if not caleditable:
     #     #     result = result + '  url: \'' + event['url'] + '\'\n'
     #     return result
 
-    def get_first_day(self):
-        firstDay = self.context.firstDay
-        return firstDay
-
     def get_slot_minutes(self):
-        slotMinutes = self.context.slotMinutes
+        settings = self.get_settings()
+        slotMinutes = settings.get('slotMinutes')
         if slotMinutes < 1:
             result = '00:01:00'
         elif slotMinutes < 10:
@@ -67,19 +72,22 @@ class FullcalendarView(BrowserView):
         return result
 
     def get_all_day(self):
-        if self.context.allDay:
+        settings = self.get_settings()
+        if settings.get('allDay'):
             return 'true'
         else:
             return 'false'
 
     def get_weekends(self):
-        if self.context.weekends:
+        settings = self.get_settings()
+        if settings.get('weekends'):
             return 'true'
         else:
             return 'false'
 
     def get_first_hour(self):
-        firstHour = self.context.firstHour
+        settings = self.get_settings()
+        firstHour = settings.get('firstHour')
         firstHourInt = int(firstHour)
         if '+' in firstHour or '-' in firstHour:  # relative to now
             now = DateTime()
@@ -111,16 +119,9 @@ class FullcalendarView(BrowserView):
                 result = time
         return result
 
-    def get_min_time(self):
-        minTime = self.get_time(self.context.minTime)
-        return minTime
-
-    def get_max_time(self):
-        maxTime = self.get_time(self.context.maxTime)
-        return maxTime
-
     def get_editable(self):
-        if self.context.caleditable:
+        settings = self.get_settings()
+        if settings.get('caleditable'):
             return 'true'
         else:
             return 'false'
@@ -130,23 +131,24 @@ class FullcalendarView(BrowserView):
         return lang
 
     def calendar_config(self):
+        settings = self.get_settings()
         configuration = {
             "timeZone": "UTC",
             "slotDuration": self.get_slot_minutes(),
             "allDaySlot": self.get_all_day(),
-            "initialView": self.context.defaultCalendarView,
+            "initialView": settings.get('defaultCalendarView'),
             "locale": self.current_language(),
-            "firstDay": self.get_first_day(),
+            "firstDay": settings.get('firstDay'),
             "headerToolbar": {
-                "left": self.context.headerLeft,
+                "left": settings.get('headerLeft'),
                 "center": "title",
-                "right": self.context.headerRight,
+                "right": settings.get('headerRight'),
             },
             "weekends": self.get_weekends(),
             "scrollTime": self.get_first_hour(),
-            "slotMinTime": self.get_min_time(),
-            "slotMaxTime": self.get_max_time(),
-            "height": self.context.calendarHeight if self.context.calendarHeight else 750,
+            "slotMinTime": settings.get('minTime'),
+            "slotMaxTime": settings.get('maxTime'),
+            "height": settings.get('calendarHeight') if settings.get('calendarHeight') else 750,
             "editable": self.get_editable(),
             "selectable": self.get_editable(),
             "events": self._get_events(),

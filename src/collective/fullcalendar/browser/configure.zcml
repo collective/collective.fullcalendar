@@ -24,7 +24,7 @@
   <browser:page
       for="plone.folder.interfaces.IFolder"
       name="fullcalender_settings"
-      class=".fullcalendar.IFullcalenderSettingsFormView"
+      class=".fullcalendar.FullcalenderSettingsFormView"
       allowed_attributes="enable
                           disable"
       permission="cmf.AddPortalContent"

@@ -8,6 +8,7 @@ from plone.z3cform.layout import FormWrapper
 from Products.Five.browser import BrowserView
 from z3c.form import field
 from z3c.form import form
+from z3c.form import button
 from zope import schema
 from zope.component import adapter
 from zope.interface import alsoProvides
@@ -19,6 +20,7 @@ from zope.schema.vocabulary import SimpleTerm, SimpleVocabulary
 from z3c.relationfield.schema import RelationChoice
 from plone.autoform import directives
 from plone.app.z3cform.widget import RelatedItemsFieldWidget
+from Products.statusmessages.interfaces import IStatusMessage
 
 
 class IIFullcalenderSettings(Interface):
@@ -200,9 +202,33 @@ class IFullcalenderSettings(AnnotationAdapter):
     ANNOTATION_KEY = "fullcalender_settings"
 
 
-class IFullcalenderSettingsForm(form.Form):
+class FullcalenderSettingsForm(form.EditForm):
     fields = field.Fields(IIFullcalenderSettings)
     ignoreContext = False
+
+    label = _(u"Edit fullcalender settings")
+
+    @button.buttonAndHandler(_(u"Save"), name='save')
+    def handleSave(self, action):  # NOQA
+        data, errors = self.extractData()
+        if errors:
+            self.status = self.formErrorsMessage
+            return
+
+        self.applyChanges(data)
+        IStatusMessage(self.request).addStatusMessage(
+            _(u"Changes saved."),
+            "info")
+        self.request.response.redirect(self.request.getURL())
+
+    @button.buttonAndHandler(_(u"Cancel"), name='cancel')
+    def handleCancel(self, action):
+        IStatusMessage(self.request).addStatusMessage(
+            _(u"Changes canceled."),
+            "info")
+        self.request.response.redirect("%s/%s" % (
+            self.context.absolute_url(),
+            '@@fullcalender_settings'))
 
 
 class IFullcalenderTool(BrowserView):
@@ -220,8 +246,8 @@ class IFullcalenderTool(BrowserView):
         return IFullcalenderEnabled.providedBy(self.context)
 
 
-class IFullcalenderSettingsFormView(FormWrapper):
-    form = IFullcalenderSettingsForm
+class FullcalenderSettingsFormView(FormWrapper):
+    form = FullcalenderSettingsForm
 
     def enable(self):
         """Enable icalendar import on this context.
