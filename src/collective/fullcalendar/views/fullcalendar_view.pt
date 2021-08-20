@@ -10,15 +10,8 @@
     <div id="calendar" />
     <div id="calendarEditArea" />
 
-    <tal:block tal:replace="nothing">
-        Modal throws error, as long as not fixed it will stay out of the code
+    <tal:block>
         <a id="calendarAddLink" class="pat-plone-modal" href="/Plone/++add++Event?ajax_load=1"></a>
-        <tal:block tal:repeat="event python:view._get_events()">
-        <a class="pat-plone-modal"
-            tal:attributes="id python:'editlink-'+event['id'];
-                            href python:event['url']+'/@@edit'">
-        </a>
-        </tal:block>
     </tal:block>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -43,33 +36,10 @@
                 start = info.startStr;
                 end = info.endStr;
                 $('a#calendarAddLink').click();
-                //console.log(start);
-                //console.log(end);
-                //$('#formfield-form-widgets-IEventBasic-start input')
-                //calendarEditArea.load(parentURL+'/++add++Event?ajax_load=1',function(responseTxt, statusTxt, xhr){
-                    //if(statusTxt == "success")
-                    //    alert("External content loaded successfully!");
-                    //if(statusTxt == "error")
-                    //   alert("Error: " + xhr.status + ": " + xhr.statusText);
-                    //$('#form').attr('target','calendarTargetArea');
-                    //$('#form').on('submit',function(){$('#form').remove()});
-                // });
-            });
-
-            // Klick auf einen Termin
-            calendar.on('eventClick', function(info) {
-                $('#editlink-'+info.event.id).click();
-                //alert('Event: ' + info.event.title);
-                //alert('Event: ' + );
-                //alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
-                //alert('View: ' + info.view.type);
-                // change the border color just for fun
-                //info.el.style.borderColor = 'red';
             });
         
             // Vergrößern/Verkleinern eines Termins
             calendar.on('eventResize', function(info) {
-                //alert(info.event.title + " end is now " + info.event.end.toISOString());
                 if (confirm("Do you want to change the event?")) {
                     window.location.href = "@@edit-event?method=resize&uid="+info.event.id+"&new_end="+info.event.end.toISOString();
                 } else {

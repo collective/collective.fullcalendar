@@ -4,9 +4,13 @@ Changelog
 1.0 (unreleased)
 ------------------
 
+- make own form for adding new events
+
+1.0a3
+
 - enhance installation profiles and resources
 - add fullcalendar to collections
-- make own form for adding new events
+- adding events over calendar with normal AddForm possible
 
 1.0a2
 ------------------
