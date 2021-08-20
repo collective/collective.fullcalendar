@@ -22,7 +22,7 @@
             <element>fullcalender-script</element>
             <element>fullcalender-locals</element>
         </value>
-        <value key="expression"></value>
+        <value key="expression">python:context.restrictedTraverse('@@plone_interface_info').provides('collective.fullcalendar.interfaces.IFullcalenderEnabled')</value>
         <value key="depends"></value>
         <value key="jscompilation">++plone++static/fullcalendar-compiled.js</value>
         <value key="csscompilation">++plone++static/fullcalendar-compiled.css</value>
