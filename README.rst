@@ -28,7 +28,10 @@
 collective.fullcalendar
 =======================
 
-Tell me what your product does
+Overview
+--------
+
+collective.fullcalendar is an implementation of https://fullcalendar.io/ into classic UI Plone.
 
 Features
 --------
@@ -54,7 +57,8 @@ Translations
 
 This product has been translated into
 
-- comming soon
+- German (mostly done)
+- English (mostly done)
 
 
 Installation

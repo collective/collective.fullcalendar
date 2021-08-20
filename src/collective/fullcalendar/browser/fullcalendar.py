@@ -4,6 +4,7 @@ from plone.app.event import base
 from plone.app.event.base import AnnotationAdapter
 from collective.fullcalendar.interfaces import IFullcalenderEnabled
 from plone.folder.interfaces import IFolder
+from plone.app.contenttypes.interfaces import ICollection
 from plone.z3cform.layout import FormWrapper
 from Products.Five.browser import BrowserView
 from z3c.form import field
@@ -194,6 +195,7 @@ class IIFullcalenderSettings(Interface):
     )
 
 
+@adapter(ICollection)
 @adapter(IFolder)
 @implementer(IIFullcalenderSettings)
 class IFullcalenderSettings(AnnotationAdapter):
@@ -235,7 +237,7 @@ class IFullcalenderTool(BrowserView):
 
     @property
     def available(self):
-        return IFolder.providedBy(self.context)
+        return (IFolder.providedBy(self.context) or ICollection.providedBy(self.context))
 
     @property
     def available_disabled(self):
@@ -250,14 +252,14 @@ class FullcalenderSettingsFormView(FormWrapper):
     form = FullcalenderSettingsForm
 
     def enable(self):
-        """Enable icalendar import on this context.
+        """Enable fullcalendar import on this context.
         """
         alsoProvides(self.context, IFullcalenderEnabled)
         self.context.reindexObject(idxs=('object_provides'))
         self.request.response.redirect(self.context.absolute_url())
 
     def disable(self):
-        """Disable icalendar import on this context.
+        """Disable fullcalendar import on this context.
         """
         noLongerProvides(self.context, IFullcalenderEnabled)
         self.context.reindexObject(idxs=('object_provides'))

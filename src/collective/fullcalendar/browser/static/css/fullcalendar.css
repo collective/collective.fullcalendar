@@ -101,27 +101,27 @@
 }
 
 .fc-icon-chevron-left:before {
-  content: "\e900";
+  content: "\003c";
 }
 
 .fc-icon-chevron-right:before {
-  content: "\e901";
+  content: "\003e";
 }
 
 .fc-icon-chevrons-left:before {
-  content: "\e902";
+  content: "\003c";
 }
 
 .fc-icon-chevrons-right:before {
-  content: "\e903";
+  content: "\003e";
 }
 
 .fc-icon-minus-square:before {
-  content: "\e904";
+  content: "-";
 }
 
 .fc-icon-plus-square:before {
-  content: "\e905";
+  content: "+";
 }
 
 .fc-icon-x:before {
