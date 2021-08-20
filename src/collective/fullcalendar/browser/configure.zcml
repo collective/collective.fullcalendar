@@ -32,7 +32,7 @@
       />
 
   <browser:page
-      for="zope.schema.interfaces.ICollection"
+      for="plone.app.contenttypes.interfaces.ICollection"
       name="fullcalender_settings"
       class=".fullcalendar.FullcalenderSettingsFormView"
       allowed_attributes="enable
