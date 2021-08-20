@@ -4,7 +4,9 @@ Changelog
 1.0 (unreleased)
 ------------------
 
-- []
+- enhance installation profiles and resources
+- add fullcalendar to collections
+- make own form for adding new events
 
 1.0a2
 ------------------

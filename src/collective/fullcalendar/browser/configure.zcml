@@ -32,6 +32,16 @@
       />
 
   <browser:page
+      for="zope.schema.interfaces.ICollection"
+      name="fullcalender_settings"
+      class=".fullcalendar.FullcalenderSettingsFormView"
+      allowed_attributes="enable
+                          disable"
+      permission="cmf.AddPortalContent"
+      layer="..interfaces.ICollectiveFullcalendarLayer"
+      />
+
+  <browser:page
       for="*"
       name="fullcalender_tool"
       class=".fullcalendar.IFullcalenderTool"
