@@ -22,7 +22,6 @@ class FullcalendarView(BrowserView):
         return self.index()
 
     def get_settings(self):
-        import pdb; pdb.set_trace()
         return IIFullcalenderSettings(self.context)._data
 
     def _get_events(self):
