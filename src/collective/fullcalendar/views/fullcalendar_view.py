@@ -24,6 +24,15 @@ class FullcalendarView(BrowserView):
     def get_settings(self):
         return IIFullcalenderSettings(self.context)._data
 
+    def add_link(self):
+        settings = self.get_settings()
+        target = settings.get('target_folder', None)
+        if target:
+            return target.to_object.absolute_url()
+        else:
+            context_state = api.content.get_view("plone_context_state", self.context, self.request)
+            return context_state.folder().absolute_url()
+
     def _get_events(self):
         settings = self.get_settings()
         typ = type(self.context.aq_base)
