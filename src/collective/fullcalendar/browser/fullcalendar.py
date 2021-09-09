@@ -256,6 +256,8 @@ class FullcalenderSettingsFormView(FormWrapper):
         """
         alsoProvides(self.context, IFullcalenderEnabled)
         self.context.reindexObject(idxs=('object_provides'))
+        # TODO: save default calendar settings in annotation
+        # TODO: enable fullcalendar view
         self.request.response.redirect(self.context.absolute_url())
 
     def disable(self):
@@ -263,4 +265,6 @@ class FullcalenderSettingsFormView(FormWrapper):
         """
         noLongerProvides(self.context, IFullcalenderEnabled)
         self.context.reindexObject(idxs=('object_provides'))
+        # TODO: delete calendar settings annotation
+        # TODO: unset fullcalendar view
         self.request.response.redirect(self.context.absolute_url())
