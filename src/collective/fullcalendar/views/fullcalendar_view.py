@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+from datetime import timedelta
 from DateTime import DateTime
 from plone import api
 from Products.Five.browser import BrowserView
@@ -57,8 +57,14 @@ class FullcalendarView(BrowserView):
             result = {}
             result["id"] = obj.UID()
             result["title"] = obj.Title()
-            result["start"] = obj.start.strftime("%Y-%m-%d %H:%M:%S")
-            result["end"] = obj.end.strftime("%Y-%m-%d %H:%M:%S")
+            if obj.whole_day:
+                result["start"] = obj.start.strftime("%Y-%m-%d")
+                # Fullcalendar counts to end date 00:00
+                end = obj.end + timedelta(days=1)
+                result["end"] = end.strftime("%Y-%m-%d")
+            else:
+                result["start"] = obj.start.strftime("%Y-%m-%d %H:%M:%S")
+                result["end"] = obj.end.strftime("%Y-%m-%d %H:%M:%S")
             if caleditable:
                 result["url"] = obj.absolute_url()
             results.append(result)
