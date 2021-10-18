@@ -3,32 +3,4 @@
     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
     i18n:domain="collective.fullcalendar">
 
-    <records prefix="plone.resources/fullcalender-script"
-            interface="Products.CMFPlone.interfaces.IResourceRegistry">
-        <value key="js">++plone++collective.fullcalendar/js/fullcalendar.js</value>
-        <value key="css">
-            <element>++plone++collective.fullcalendar/css/fullcalendar.css</element>
-        </value>
-    </records>
-
-    <records prefix="plone.resources/fullcalender-locals"
-            interface="Products.CMFPlone.interfaces.IResourceRegistry">
-        <value key="js">++plone++collective.fullcalendar/js/locals-all.js</value>
-    </records>
-
-    <records prefix="plone.bundles/fullcalender"
-            interface='Products.CMFPlone.interfaces.IBundleRegistry'>
-        <value key="resources" purge="false">
-            <element>fullcalender-script</element>
-            <element>fullcalender-locals</element>
-        </value>
-        <value key="expression">python:context.restrictedTraverse('@@plone_interface_info').provides('collective.fullcalendar.interfaces.IFullcalenderEnabled')</value>
-        <value key="depends"></value>
-        <value key="jscompilation">++plone++static/fullcalendar-compiled.js</value>
-        <value key="csscompilation">++plone++static/fullcalendar-compiled.css</value>
-        <value key="last_compilation">2019-04-26 00:00:00</value>
-        <value key="compile">False</value>
-        <value key="enabled">True</value>
-    </records>
-
 </registry>
