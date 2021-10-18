@@ -8,5 +8,13 @@ class ICollectiveFullcalendarLayer(IDefaultBrowserLayer):
     """Marker interface that defines a browser layer."""
 
 
+class IFullcalendarEnabled(IDefaultBrowserLayer):
+    """Marker interface for Fullcalendar possibilities."""
+
+
 class IFullcalenderEnabled(IDefaultBrowserLayer):
-    """Marker interface for Fullcalender possibilities."""
+    """Marker interface for Fullcalendar possibilities.
+
+    Backward compatibility
+    - renaming calender to calendar
+    """
