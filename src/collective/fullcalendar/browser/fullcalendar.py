@@ -134,7 +134,7 @@ class IIFullcalenderSettings(Interface):
             default=u'Wählen Sie die erste sichtbare Stunde des Kalenders (z.B. \'5\' oder \'5:30\').'
         ),
         required=True,
-        default='0'
+        default='00:00:00'
     )
     maxTime = schema.TextLine(
         title=_(
@@ -146,7 +146,7 @@ class IIFullcalenderSettings(Interface):
             default=u'Wählen Sie die letzte sichtbare Stunde des Kalenders (z.B. \'5\' oder \'5:30\').'
         ),
         required=True,
-        default='24'
+        default='24:00:00'
     )
     # Zielordner für neue Termine
     target_folder = RelationChoice(
