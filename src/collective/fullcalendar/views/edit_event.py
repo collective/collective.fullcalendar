@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-
-from collective.fullcalendar import _
 from dateutil.parser import parse
 from plone import api
 from Products.Five.browser import BrowserView
@@ -45,7 +43,9 @@ class EditEvent(BrowserView):
             new_end = self.parse_date(new_end_form)
         except ValueError as e:
             result["status"] = "ERROR"
-            result["msg"] = "Datumsformat des neuen Endzeitpunkt des Termins unbekannt."
+            result[
+                "msg"
+            ] = f"Datumsformat des neuen Endzeitpunkt des Termins unbekannt. {e}"
             return result
         if method == "move":
             new_start_form = form["new_start"]
@@ -55,7 +55,7 @@ class EditEvent(BrowserView):
                 result["status"] = "ERROR"
                 result[
                     "msg"
-                ] = "Datumsformat des neuen Startzeitpunkt des Termins unbekannt."
+                ] = f"Datumsformat des neuen Startzeitpunkt des Termins unbekannt. {e}"
                 return result
             obj.start = new_start
         obj.end = new_end
@@ -72,8 +72,6 @@ class EditEvent(BrowserView):
         tz = default_timezone()  # E.g.: 'Europe/Vienna'
         dt = utils.dt_to_zone(dt, tz)
         # dt is now: datetime.datetime(2017, 3, 8, 16, 18, 52, tzinfo=<DstTzInfo 'Europe/Vienna' CET+1:00:00 STD>)
-
-        iso = dt.isoformat()  # '2017-03-08T16:18:52+01:00'
 
         # Converting to utc before
         dt = utils.utc(dt)

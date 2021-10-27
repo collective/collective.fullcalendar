@@ -4,6 +4,7 @@ from datetime import timedelta
 from DateTime import DateTime
 from plone import api
 from plone.app.contenttypes.content import Collection, Folder
+
 # Import existing method for getting events
 from plone.app.event.base import get_events, RET_MODE_OBJECTS
 from Products.Five.browser import BrowserView
