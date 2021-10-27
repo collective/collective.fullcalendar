@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from collective.fullcalendar import _
-from Products.Five.browser import BrowserView
-from plone import api
 from dateutil.parser import parse
+from plone import api
+from Products.Five.browser import BrowserView
+
 import transaction
 
 

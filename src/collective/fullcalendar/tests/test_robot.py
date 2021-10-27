@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-from collective.fullcalendar.testing import (
+from collective.fullcalendar.testing import (  # noqa: E501
     COLLECTIVE_FULLCALENDAR_ACCEPTANCE_TESTING,
-)  # noqa: E501
+)
 from plone.app.testing import ROBOT_TEST_LEVEL
 from plone.testing import layered
 

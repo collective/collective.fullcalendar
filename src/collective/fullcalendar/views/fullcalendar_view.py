@@ -1,16 +1,12 @@
 # -*- coding: utf-8 -*-
+from collective.fullcalendar.browser.fullcalendar import IIFullcalendarSettings
 from datetime import timedelta
 from DateTime import DateTime
 from plone import api
-from Products.Five.browser import BrowserView
-from plone.app.contenttypes.content import Collection
-from plone.app.contenttypes.content import Folder
-
-from collective.fullcalendar.browser.fullcalendar import IIFullcalendarSettings
-
+from plone.app.contenttypes.content import Collection, Folder
 # Import existing method for getting events
-from plone.app.event.base import get_events
-from plone.app.event.base import RET_MODE_OBJECTS
+from plone.app.event.base import get_events, RET_MODE_OBJECTS
+from Products.Five.browser import BrowserView
 
 
 class FullcalendarView(BrowserView):

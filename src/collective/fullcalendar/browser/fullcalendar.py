@@ -1,26 +1,20 @@
 # -*- coding: utf-8 -*-
 from collective.fullcalendar import _
-from plone.app.event.base import AnnotationAdapter
 from collective.fullcalendar.interfaces import IFullcalendarEnabled
-from plone.folder.interfaces import IFolder
 from plone.app.contenttypes.interfaces import ICollection
+from plone.app.event.base import AnnotationAdapter
+from plone.app.z3cform.widget import RelatedItemsFieldWidget
+from plone.autoform import directives
+from plone.folder.interfaces import IFolder
 from plone.z3cform.layout import FormWrapper
 from Products.Five.browser import BrowserView
-from z3c.form import field
-from z3c.form import form
-from z3c.form import button
+from Products.statusmessages.interfaces import IStatusMessage
+from z3c.form import button, field, form
+from z3c.relationfield.schema import RelationChoice
 from zope import schema
 from zope.component import adapter
-from zope.interface import alsoProvides
-from zope.interface import implementer
-from zope.interface import Interface
-from zope.interface import noLongerProvides
-
+from zope.interface import alsoProvides, implementer, Interface, noLongerProvides
 from zope.schema.vocabulary import SimpleTerm, SimpleVocabulary
-from z3c.relationfield.schema import RelationChoice
-from plone.autoform import directives
-from plone.app.z3cform.widget import RelatedItemsFieldWidget
-from Products.statusmessages.interfaces import IStatusMessage
 
 
 class IIFullcalendarSettings(Interface):
