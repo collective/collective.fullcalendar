@@ -38,9 +38,6 @@
             >+</a>
     </tal:add>
 
-    <script src="++plone++collective.fullcalendar/js/main.min.js"></script>
-    <script src="++plone++collective.fullcalendar/js/locales-all.min.js"></script>
-    <link rel="stylesheet" href="++plone++collective.fullcalendar/css/main.min.css">
     <script>
         document.addEventListener('DOMContentLoaded', function() {            
             var calendarElement = document.getElementById('calendar');
