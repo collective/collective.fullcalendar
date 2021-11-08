@@ -12,9 +12,11 @@ from Products.statusmessages.interfaces import IStatusMessage
 from z3c.form import button, field, form
 from z3c.relationfield.schema import RelationChoice
 from zope import schema
-from zope.component import adapter
+from zope.component import adapter, provideAdapter
 from zope.interface import alsoProvides, implementer, Interface, noLongerProvides
 from zope.schema.vocabulary import SimpleTerm, SimpleVocabulary
+from zope.annotation.interfaces import IAnnotations
+from zope.annotation import factory
 
 
 class IIFullcalendarSettings(Interface):
@@ -211,8 +213,14 @@ class FullcalendarSettingsFormView(FormWrapper):
         """Enable fullcalendar import on this context."""
         alsoProvides(self.context, IFullcalendarEnabled)
         self.context.reindexObject(idxs=("object_provides"))
-        # TODO: save default calendar settings in annotation
-        # TODO: enable fullcalendar view
+        annotations = IAnnotations(self.context)
+        if "fullcalendar_settings" not in annotations:
+            # TODO: save default calendar settings in annotation
+            # TODO: enable fullcalendar view
+            dict = {'slotMinutes': 30, 'allDay': True, 'defaultCalendarView': 'dayGridMonth', 'headerLeft': 'prev,next today', 'headerRight': 'dayGridMonth timeGridWeek listWeek', 'weekends': True, 'firstDay': 1, 'firstHour': '6', 'minTime': '00:00:00', 'maxTime': '24:00:00', 'event_type': 'Event', 'caleditable': False}
+            annotations["fullcalendar_settings"] = dict
+        else:
+            pass
         self.request.response.redirect(self.context.absolute_url())
 
     def disable(self):
@@ -221,4 +229,6 @@ class FullcalendarSettingsFormView(FormWrapper):
         self.context.reindexObject(idxs=("object_provides"))
         # TODO: delete calendar settings annotation
         # TODO: unset fullcalendar view
+        annotations = IAnnotations(self.context)
+        del annotations["fullcalendar_settings"]
         self.request.response.redirect(self.context.absolute_url())

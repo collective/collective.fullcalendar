@@ -22,4 +22,19 @@
     permission="zope2.View"
     />
 
+  <adapter
+      for="Products.CMFCore.interfaces.IFolderish
+           collective.fullcalendar.interfaces.ICollectiveFullcalendarLayer
+           plone.dexterity.interfaces.IDexterityFTI"
+      provides="zope.publisher.interfaces.browser.IBrowserPage"
+      factory=".add_event_view.AddView"
+      name="Event"
+      />
+  <class class=".add_event_view.AddView">
+      <require
+          permission="cmf.AddPortalContent"
+          interface="zope.publisher.interfaces.browser.IBrowserPage"
+          />
+  </class>
+
 </configure>

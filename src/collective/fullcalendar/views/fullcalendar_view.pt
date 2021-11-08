@@ -41,6 +41,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {            
             var calendarElement = document.getElementById('calendar');
+            var calendarAddLink = document.getElementById('calendarAddLink');
             var calendarEditArea = $('#calendarEditArea');
             var parentURL = '<tal:block tal:content="structure python:context.aq_parent.absolute_url()" />';
 
@@ -51,17 +52,31 @@
 
             // Klick auf einen Slot. Bei Monatsansicht wird ganztägiger Termin erstellt, ansonsten Termin in Slotgröße
             calendar.on('dateClick', function(info) {
-                start = info.dateStr;
-                end = info.endStr;
-                console.debug('** dateClick info', info);
-                $('a#calendarAddLink').click();
+                date = info.dateStr;
+                allDay = info.allDay;
+                var href = calendarAddLink.getAttribute('href');
+                var url = new URL(href);
+                url.searchParams.delete('start')
+                url.searchParams.delete('end')
+                url.searchParams.set('date', date);
+                url.searchParams.set('allDay', allDay);
+                calendarAddLink.setAttribute('href', url);
+                calendarAddLink.click();
             });
 
             // Auswahl eines Bereichs: Bei Monatsansicht werden mehrtägige Termine erstellt, ansonsten Termin in Bereichsgröße
             calendar.on('select', function(info) {
                 start = info.startStr;
                 end = info.endStr;
-                $('a#calendarAddLink').click();
+                allDay = info.allDay;
+                var href = calendarAddLink.getAttribute('href');
+                var url = new URL(href);
+                url.searchParams.set('start', start);
+                url.searchParams.set('end', end);
+                url.searchParams.delete('date')
+                url.searchParams.set('allDay', allDay);
+                calendarAddLink.setAttribute('href', url);
+                calendarAddLink.click();
             });
         
             // Vergrößern/Verkleinern eines Termins

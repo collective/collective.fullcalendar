@@ -52,8 +52,8 @@ class FullcalendarView(BrowserView):
                 obj = event
             caleditable = settings.get("caleditable")
             result = {}
-            result["id"] = obj.UID()
-            result["title"] = obj.Title()
+            result['id'] = obj.UID()
+            result['title'] = obj.Title()
             if obj.whole_day:
                 result["start"] = obj.start.strftime("%Y-%m-%d")
                 # Fullcalendar counts to end date 00:00

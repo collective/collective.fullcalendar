@@ -7,6 +7,7 @@ Changelog
 - make own form for adding new events
 
 1.0a3
+------------------
 
 - enhance installation profiles and resources
 - add fullcalendar to collections
