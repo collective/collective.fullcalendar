@@ -16,7 +16,7 @@
 
   <browser:page
     name="fullcalendar-view"
-    for="collective.fullcalendar.interfaces.IFullcalenderEnabled"
+    for="collective.fullcalendar.interfaces.IFullcalendarEnabled"
     class=".fullcalendar_view.FullcalendarView"
     template="fullcalendar_view.pt"
     permission="zope2.View"

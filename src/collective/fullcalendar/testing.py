@@ -21,11 +21,12 @@ class CollectiveFullcalendarLayer(PloneSandboxLayer):
         # The z3c.autoinclude feature is disabled in the Plone fixture base
         # layer.
         import plone.restapi
+
         self.loadZCML(package=plone.restapi)
         self.loadZCML(package=collective.fullcalendar)
 
     def setUpPloneSite(self, portal):
-        applyProfile(portal, 'collective.fullcalendar:default')
+        applyProfile(portal, "collective.fullcalendar:default")
 
 
 COLLECTIVE_FULLCALENDAR_FIXTURE = CollectiveFullcalendarLayer()
@@ -33,13 +34,13 @@ COLLECTIVE_FULLCALENDAR_FIXTURE = CollectiveFullcalendarLayer()
 
 COLLECTIVE_FULLCALENDAR_INTEGRATION_TESTING = IntegrationTesting(
     bases=(COLLECTIVE_FULLCALENDAR_FIXTURE,),
-    name='CollectiveFullcalendarLayer:IntegrationTesting',
+    name="CollectiveFullcalendarLayer:IntegrationTesting",
 )
 
 
 COLLECTIVE_FULLCALENDAR_FUNCTIONAL_TESTING = FunctionalTesting(
     bases=(COLLECTIVE_FULLCALENDAR_FIXTURE,),
-    name='CollectiveFullcalendarLayer:FunctionalTesting',
+    name="CollectiveFullcalendarLayer:FunctionalTesting",
 )
 
 
@@ -49,5 +50,5 @@ COLLECTIVE_FULLCALENDAR_ACCEPTANCE_TESTING = FunctionalTesting(
         REMOTE_LIBRARY_BUNDLE_FIXTURE,
         z2.ZSERVER_FIXTURE,
     ),
-    name='CollectiveFullcalendarLayer:AcceptanceTesting',
+    name="CollectiveFullcalendarLayer:AcceptanceTesting",
 )

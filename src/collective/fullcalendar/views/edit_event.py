@@ -1,65 +1,66 @@
 # -*- coding: utf-8 -*-
-
-from collective.fullcalendar import _
-from Products.Five.browser import BrowserView
-from plone import api
-from datetime import datetime
 from dateutil.parser import parse
+from plone import api
+from Products.Five.browser import BrowserView
+
 import transaction
 
 
 class EditEvent(BrowserView):
-
     def __call__(self):
         return self.index()
 
     def process(self):
         form = self.request.form
         result = {}
-        if 'uid' not in form.keys():
-            result['status'] = 'ERROR'
-            result['msg'] = 'Keine UID übergeben.'
+        if "uid" not in form.keys():
+            result["status"] = "ERROR"
+            result["msg"] = "Keine UID übergeben."
             return result
-        uid = form['uid']
+        uid = form["uid"]
         brains = api.content.find(UID=uid)
         if not brains:
-            result['status'] = 'ERROR'
-            result['msg'] = 'Kein Termin mit dieser UID gefunden.'
+            result["status"] = "ERROR"
+            result["msg"] = "Kein Termin mit dieser UID gefunden."
             return result
         obj = brains[0].getObject()
-        if 'method' not in form.keys():
-            result['status'] = 'ERROR'
-            result['msg'] = 'Keine Methode (resize oder move) ausgewählt.'
+        if "method" not in form.keys():
+            result["status"] = "ERROR"
+            result["msg"] = "Keine Methode (resize oder move) ausgewählt."
             return result
-        method = form['method']
-        if method not in ['resize', 'move']:
-            result['status'] = 'ERROR'
-            result['msg'] = 'Methode ist weder resize noch move.'
+        method = form["method"]
+        if method not in ["resize", "move"]:
+            result["status"] = "ERROR"
+            result["msg"] = "Methode ist weder resize noch move."
             return result
-        if 'new_end' not in form.keys():
-            result['status'] = 'ERROR'
-            result['msg'] = 'Kein neuer Endzeitpunkt des Termins übergeben.'
+        if "new_end" not in form.keys():
+            result["status"] = "ERROR"
+            result["msg"] = "Kein neuer Endzeitpunkt des Termins übergeben."
             return result
-        new_end_form = form['new_end']
+        new_end_form = form["new_end"]
         try:
             # new_end = datetime.strptime(new_end_form, '%Y-%m-%dT%H:%M:%S.%f')
             new_end = self.parse_date(new_end_form)
         except ValueError as e:
-            result['status'] = 'ERROR'
-            result['msg'] = 'Datumsformat des neuen Endzeitpunkt des Termins unbekannt.'
+            result["status"] = "ERROR"
+            result[
+                "msg"
+            ] = f"Datumsformat des neuen Endzeitpunkt des Termins unbekannt. {e}"
             return result
-        if method == 'move':
-            new_start_form = form['new_start']
+        if method == "move":
+            new_start_form = form["new_start"]
             try:
                 new_start = self.parse_date(new_start_form)
             except ValueError as e:
-                result['status'] = 'ERROR'
-                result['msg'] = 'Datumsformat des neuen Startzeitpunkt des Termins unbekannt.'
+                result["status"] = "ERROR"
+                result[
+                    "msg"
+                ] = f"Datumsformat des neuen Startzeitpunkt des Termins unbekannt. {e}"
                 return result
             obj.start = new_start
         obj.end = new_end
         transaction.commit()
-        self.request.response.redirect(self.request['HTTP_REFERER'])
+        self.request.response.redirect(self.request["HTTP_REFERER"])
 
     def parse_date(self, date_str):
         dt = parse(date_str)
@@ -71,8 +72,6 @@ class EditEvent(BrowserView):
         tz = default_timezone()  # E.g.: 'Europe/Vienna'
         dt = utils.dt_to_zone(dt, tz)
         # dt is now: datetime.datetime(2017, 3, 8, 16, 18, 52, tzinfo=<DstTzInfo 'Europe/Vienna' CET+1:00:00 STD>)
-
-        iso = dt.isoformat()  # '2017-03-08T16:18:52+01:00'
 
         # Converting to utc before
         dt = utils.utc(dt)
