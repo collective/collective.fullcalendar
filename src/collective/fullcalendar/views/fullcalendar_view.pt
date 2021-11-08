@@ -7,19 +7,39 @@
 <body>
   <metal:block fill-slot="content-core">
 
+    <tal:debug tal:define="debug python:False;">
+        <div
+            tal:condition="debug"
+            tal:define="
+                settings view/get_settings;
+                config python:view.calendar_config();
+            ">
+            <h2>settings made for this view</h2>
+            <div tal:repeat="setting python:settings.keys()">
+                <div tal:content="python:f'{setting}: {settings[setting]}'">setting</div>
+            </div>
+            <h2>config provided to FullCalendar.Calendar</h2>
+            <div tal:repeat="configkey python:config.keys()">
+                <div tal:content="python:f'{configkey}: {config[configkey]}'">configuration</div>
+            </div>
+        </div>
+    </tal:debug>
+
     <div id="calendar" />
     <div id="calendarEditArea" />
 
-    <tal:block tal:define="add_link python: view.add_link()">
-        <a id="calendarAddLink"
-           class="pat-plone-modal"
-           href="/Plone/++add++Event?ajax_load=1"
-           tal:attributes="href python: add_link + '/++add++Event?ajax_load=1'"></a>
-    </tal:block>
+    <!-- TODO Add theming 'add event link' -->
+    <tal:add>
+        <a
+            id="calendarAddLink"
+            class="pat-plone-modal"
+            href="++add++Event?ajax_load=1"
+            tal:attributes="href python: view.add_link()"
+            >+</a>
+    </tal:add>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-
+        document.addEventListener('DOMContentLoaded', function() {            
             var calendarElement = document.getElementById('calendar');
             var calendarEditArea = $('#calendarEditArea');
             var parentURL = '<tal:block tal:content="structure python:context.aq_parent.absolute_url()" />';
@@ -28,10 +48,12 @@
 
             calendar.render();
 
+
             // Klick auf einen Slot. Bei Monatsansicht wird ganztägiger Termin erstellt, ansonsten Termin in Slotgröße
             calendar.on('dateClick', function(info) {
-                start = info.startStr;
+                start = info.dateStr;
                 end = info.endStr;
+                console.debug('** dateClick info', info);
                 $('a#calendarAddLink').click();
             });
 

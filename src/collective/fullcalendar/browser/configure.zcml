@@ -18,13 +18,13 @@
       directory="static"
       />
 
-  <!-- Fullcalender Settings -->
-  <adapter factory=".fullcalendar.IFullcalenderSettings"/>
+  <!-- Fullcalendar Settings -->
+  <adapter factory=".fullcalendar.IFullcalendarSettings"/>
 
   <browser:page
       for="plone.folder.interfaces.IFolder"
-      name="fullcalender_settings"
-      class=".fullcalendar.FullcalenderSettingsFormView"
+      name="fullcalendar_settings"
+      class=".fullcalendar.FullcalendarSettingsFormView"
       allowed_attributes="enable
                           disable"
       permission="cmf.AddPortalContent"
@@ -33,8 +33,8 @@
 
   <browser:page
       for="plone.app.contenttypes.interfaces.ICollection"
-      name="fullcalender_settings"
-      class=".fullcalendar.FullcalenderSettingsFormView"
+      name="fullcalendar_settings"
+      class=".fullcalendar.FullcalendarSettingsFormView"
       allowed_attributes="enable
                           disable"
       permission="cmf.AddPortalContent"
@@ -43,8 +43,8 @@
 
   <browser:page
       for="*"
-      name="fullcalender_tool"
-      class=".fullcalendar.IFullcalenderTool"
+      name="fullcalendar_tool"
+      class=".fullcalendar.IFullcalendarTool"
       allowed_attributes="enabled
                           available
                           available_disabled"
