@@ -155,6 +155,7 @@ class IIFullcalendarSettings(Interface):
             default=u"Check this box if you want the events in the calendar to be editable.",
         ),
         required=False,
+        default=False,
     )
 
 
@@ -182,7 +183,7 @@ class FullcalendarSettingsForm(form.EditForm):
 
         self.applyChanges(data)
         IStatusMessage(self.request).addStatusMessage(_(u"Changes saved."), "info")
-        self.request.response.redirect(self.request.getURL())
+        self.request.response.redirect(self.context.absolute_url())
 
     @button.buttonAndHandler(_(u"Cancel"), name="cancel")
     def handleCancel(self, action):
@@ -210,25 +211,24 @@ class FullcalendarSettingsFormView(FormWrapper):
     form = FullcalendarSettingsForm
 
     def enable(self):
-        """Enable fullcalendar import on this context."""
+        """Enable fullcalendar on this context."""
         alsoProvides(self.context, IFullcalendarEnabled)
         self.context.reindexObject(idxs=("object_provides"))
         annotations = IAnnotations(self.context)
         if "fullcalendar_settings" not in annotations:
-            # TODO: save default calendar settings in annotation
-            # TODO: enable fullcalendar view
-            dict = {'slotMinutes': 30, 'allDay': True, 'defaultCalendarView': 'dayGridMonth', 'headerLeft': 'prev,next today', 'headerRight': 'dayGridMonth timeGridWeek listWeek', 'weekends': True, 'firstDay': 1, 'firstHour': '6', 'minTime': '00:00:00', 'maxTime': '24:00:00', 'event_type': 'Event', 'caleditable': False}
-            annotations["fullcalendar_settings"] = dict
-        else:
-            pass
+            # get the default-setting from the schema
+            default_settings = {}
+            for key, field in IIFullcalendarSettings.namesAndDescriptions():
+                default_settings[key] = field.default
+            annotations["fullcalendar_settings"] = default_settings
+        self.context.setLayout("fullcalendar-view")
         self.request.response.redirect(self.context.absolute_url())
 
     def disable(self):
-        """Disable fullcalendar import on this context."""
+        """Disable fullcalendar on this context."""
         noLongerProvides(self.context, IFullcalendarEnabled)
         self.context.reindexObject(idxs=("object_provides"))
-        # TODO: delete calendar settings annotation
-        # TODO: unset fullcalendar view
         annotations = IAnnotations(self.context)
         del annotations["fullcalendar_settings"]
+        self.context.manage_delProperties(["layout"])
         self.request.response.redirect(self.context.absolute_url())
