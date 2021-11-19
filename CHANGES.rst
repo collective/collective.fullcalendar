@@ -4,24 +4,51 @@ Changelog
 1.0 (unreleased)
 ------------------
 
-- make own form for adding new events
+- Make own form for adding new events
+  [wkbkhard]
+
+- Fix add-link location
+  [pbauer]
+
+- Add setting: custom event type
+  [ksuess]
+
+- Fix whole day events
+  [ksuess]
+
+- Use default-settings from schema.
+  [pbauer]
+
+- Switch view on enable and disable
+  [pbauer]
+
 
 1.0a3
 ------------------
 
-- enhance installation profiles and resources
-- add fullcalendar to collections
-- adding events over calendar with normal AddForm possible
+- Enhance installation profiles and resources
+  [wkbkhard, ksuess]
+
+- Add fullcalendar to collections
+  [wkbkhard]
+
+- Adding events over calendar with normal AddForm possible
+  [wkbkhard]
 
 1.0a2
 ------------------
 
-- changing programming of configuration
-- disable fullcalendar behavior (still there, but not directly installed)
-- add fullcalendar interface with AnnotationAdapter with possibility to enable/disable calendar by action
+- Changing programming of configuration
+  [wkbkhard]
+
+- Disable fullcalendar behavior (still there, but not directly installed)
+  [wkbkhard]
+
+- Add fullcalendar interface with AnnotationAdapter with possibility to enable/disable calendar by action
+  [wkbkhard]
 
 1.0a1
 ------------------
 
 - Initial release.
-  []
+  [wkbkhard]
