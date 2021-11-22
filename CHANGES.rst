@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.0 (unreleased)
+1.0b1 (2021-11-22)
 ------------------
 
 - Make own form for adding new events

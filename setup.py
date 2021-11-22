@@ -16,7 +16,7 @@ long_description = "\n\n".join(
 
 setup(
     name="collective.fullcalendar",
-    version="1.0a3",
+    version="1.0b1",
     description="Fullcalendar for Plone",
     long_description=long_description,
     # Get more from https://pypi.org/classifiers/
