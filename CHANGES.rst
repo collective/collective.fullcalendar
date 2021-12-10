@@ -4,7 +4,17 @@ Changelog
 1.0b2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix support for folders.
+  [pbauer]
+
+- Support custom collection-types.
+  [pbauer]
+
+- Ignore limit and batching in collections.
+  [pbauer]
+
+- Do not calculate events twice.
+  [pbauer]
 
 
 1.0b1 (2021-11-22)
