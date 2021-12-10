@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 from collective.fullcalendar.browser.fullcalendar import IIFullcalendarSettings
-from datetime import timedelta
 from DateTime import DateTime
+from datetime import timedelta
 from plone import api
-from plone.app.contenttypes.content import Collection, Folder
-
-# Import existing method for getting events
-from plone.app.event.base import get_events, RET_MODE_OBJECTS
+from plone.app.contenttypes.behaviors.collection import ISyndicatableCollection
+from plone.app.event.base import get_events
+from plone.app.event.base import RET_MODE_BRAINS
+from plone.dexterity.interfaces import IDexterityContainer
+from plone.event.interfaces import IEvent
 from Products.Five.browser import BrowserView
 
 
@@ -38,22 +39,21 @@ class FullcalendarView(BrowserView):
         return event_type
 
     def _get_events(self):
-        settings = self.get_settings()
-        typ = type(self.context.aq_base)
-        if typ == Collection:
-            events = self.context.results()
-        elif typ == Folder:
-            events = get_events(self.context, ret_mode=RET_MODE_OBJECTS, expand=True)
+        if ISyndicatableCollection.providedBy(self.context):
+            # Filter out non-events. Assume all event-types provde IEvent
+            # Do not limit and batch results...
+            custom_query = {'object_provides': IEvent.__identifier__}
+            brains = self.context.results(batch=False, custom_query=custom_query, limit=10000)
+        elif IDexterityContainer.providedBy(self.context):
+            path = "/".join(self.context.getPhysicalPath())
+            brains = get_events(self.context, expand=True, path=path)
         results = []
-        for event in events:
-            try:
-                obj = event.getObject()
-            except AttributeError:
-                obj = event
-            caleditable = settings.get("caleditable")
+        for brain in brains:
             result = {}
-            result['id'] = obj.UID()
-            result['title'] = obj.Title()
+            obj = brain.getObject()
+            result["id"] = obj.UID()
+            result["title"] = obj.Title()
+            result["url"] = obj.absolute_url()
             if obj.whole_day:
                 result["start"] = obj.start.strftime("%Y-%m-%d")
                 # Fullcalendar counts to end date 00:00
@@ -62,19 +62,8 @@ class FullcalendarView(BrowserView):
             else:
                 result["start"] = obj.start.strftime("%Y-%m-%d %H:%M:%S")
                 result["end"] = obj.end.strftime("%Y-%m-%d %H:%M:%S")
-            if caleditable:
-                result["url"] = obj.absolute_url()
             results.append(result)
         return results
-
-    # def render_events(self):
-    #     settings = self.get_settings()
-    #     events = self._get_events()
-    #     # caleditable = settings.caleditable
-    #     result = json.dumps(events)
-    #     # if not caleditable:
-    #     #     result = result + '  url: \'' + event['url'] + '\'\n'
-    #     return result
 
     def get_slot_minutes(self):
         settings = self.get_settings()
