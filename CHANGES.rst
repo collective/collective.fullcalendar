@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.0b2 (unreleased)
+1.0b2 (2021-12-11)
 ------------------
 
 - Fix support for folders.
