@@ -4,7 +4,8 @@ Changelog
 1.0b3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Remove invalid python_requires.
+  [pbauer]
 
 
 1.0b2 (2021-12-11)
