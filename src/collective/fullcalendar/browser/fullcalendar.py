@@ -194,15 +194,13 @@ class FullcalendarSettingsForm(form.EditForm):
 
 
 class IFullcalendarTool(BrowserView):
-    @property
+
     def available(self):
         return IDexterityContainer.providedBy(self.context) or ISyndicatableCollection.providedBy(self.context)
 
-    @property
     def available_disabled(self):
-        return self.available and not self.enabled
+        return self.available() and not self.enabled()
 
-    @property
     def enabled(self):
         return IFullcalendarEnabled.providedBy(self.context)
 
