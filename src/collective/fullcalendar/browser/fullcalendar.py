@@ -141,13 +141,13 @@ class IIFullcalendarSettings(Interface):
         required=False,
         default="Event",
     )
-    # Höhe des Kalenders
+    # Height of Calendar
     calendarHeight = schema.Int(
         title=_(u"label_calendarHeight", default=u"Calendar height"),
         description=_(u"help_calendarHeight", default=u"Calendar height in pixels"),
         required=False,
     )
-    # Bearbeitung von Terminen erlauben
+    # Enable editing on events
     caleditable = schema.Bool(
         title=_(u"label_caleditable", default=u"Calendar editable"),
         description=_(
