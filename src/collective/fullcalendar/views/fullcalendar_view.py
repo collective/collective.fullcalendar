@@ -67,15 +67,6 @@ class FullcalendarView(BrowserView):
             results.append(result)
         return results
 
-    # def render_events(self):
-    #     settings = self.get_settings()
-    #     events = self._get_events()
-    #     # caleditable = settings.caleditable
-    #     result = json.dumps(events)
-    #     # if not caleditable:
-    #     #     result = result + '  url: \'' + event['url'] + '\'\n'
-    #     return result
-
     def get_slot_minutes(self):
         settings = self.get_settings()
         slotMinutes = settings.get("slotMinutes")
@@ -124,13 +115,13 @@ class FullcalendarView(BrowserView):
         return result
 
     def get_time(self, time):
-        if time.isdigit():  # Volle Stunde
+        if time.isdigit():  # full hour
             timeInt = int(time)
             if timeInt < 10:
                 result = "0" + time + ":00"
             else:
                 result = time + ":00"
-        else:  # Krumme Angabe, z.B. '5:30'
+        else:  # half hour or other datetimes, e.g. '5:30'
             if len(time) == 4:
                 result = "0" + time
             else:
