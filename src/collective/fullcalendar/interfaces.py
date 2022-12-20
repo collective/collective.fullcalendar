@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """Module where all interfaces, events and exceptions live."""
-
+from zope.interface import Interface
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 
 
@@ -8,11 +8,11 @@ class ICollectiveFullcalendarLayer(IDefaultBrowserLayer):
     """Marker interface that defines a browser layer."""
 
 
-class IFullcalendarEnabled(IDefaultBrowserLayer):
+class IFullcalendarEnabled(Interface):
     """Marker interface for Fullcalendar possibilities."""
 
 
-class IFullcalenderEnabled(IDefaultBrowserLayer):
+class IFullcalenderEnabled(Interface):
     """Marker interface for Fullcalendar possibilities.
 
     Backward compatibility

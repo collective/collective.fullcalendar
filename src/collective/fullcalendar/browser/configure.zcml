@@ -19,10 +19,14 @@
       />
 
   <!-- Fullcalendar Settings -->
-  <adapter factory=".fullcalendar.IFullcalendarSettings"/>
+  <adapter factory=".fullcalendar.IFullcalendarSettings"
+           for="plone.app.contenttypes.behaviors.collection.ISyndicatableCollection" />
+
+  <adapter factory=".fullcalendar.IFullcalendarSettings"
+           for="plone.dexterity.interfaces.IDexterityContainer" />
 
   <browser:page
-      for="plone.folder.interfaces.IFolder"
+      for="plone.dexterity.interfaces.IDexterityContainer"
       name="fullcalendar_settings"
       class=".fullcalendar.FullcalendarSettingsFormView"
       allowed_attributes="enable
@@ -32,7 +36,7 @@
       />
 
   <browser:page
-      for="plone.app.contenttypes.interfaces.ICollection"
+      for="plone.app.contenttypes.behaviors.collection.ISyndicatableCollection"
       name="fullcalendar_settings"
       class=".fullcalendar.FullcalendarSettingsFormView"
       allowed_attributes="enable

@@ -1,7 +1,30 @@
 Changelog
 =========
 
-1.0 (unreleased)
+1.0b3 (unreleased)
+------------------
+
+- Remove invalid python_requires.
+  [pbauer]
+
+
+1.0b2 (2021-12-11)
+------------------
+
+- Fix support for folders.
+  [pbauer]
+
+- Support custom collection-types.
+  [pbauer]
+
+- Ignore limit and batching in collections.
+  [pbauer]
+
+- Do not calculate events twice.
+  [pbauer]
+
+
+1.0b1 (2021-11-22)
 ------------------
 
 - Make own form for adding new events

@@ -8,7 +8,7 @@
    <property name="description" i18n:translate="help_fullcalendar">Set setting for Fullcalendar.</property>
    <property name="url_expr">string:${object_url}/@@fullcalendar_settings</property>
    <property name="icon_expr"></property>
-   <property name="available_expr">object/@@fullcalendar_tool/enabled|nothing</property>
+   <property name="available_expr">object/@@fullcalendar_tool/enabled</property>
    <property name="permissions">
     <element value="plone.app.event: Import Ical"/>
    </property>
@@ -21,7 +21,7 @@
    <property name="title" i18n:translate="title_fullcalendar_enable">Enable fullcalendar</property>
    <property name="description" i18n:translate="help_fullcalendar_enable">Click to enable the fullcalendar feature on this context.</property>
    <property name="url_expr">string:$object_url/@@fullcalendar_settings/enable</property>
-   <property name="available_expr">object/@@fullcalendar_tool/available_disabled|nothing</property>
+   <property name="available_expr">object/@@fullcalendar_tool/available_disabled</property>
    <property name="permissions">
     <element value="plone.app.event: Import Ical" />
    </property>
@@ -31,7 +31,7 @@
    <property name="title" i18n:translate="title_fullcalendar_disable">Disable fullcalendar</property>
    <property name="description" i18n:translate="help_fullcalendar_disable">Click to disable the fullcalendar feature on this context.</property>
    <property name="url_expr">string:$object_url/@@fullcalendar_settings/disable</property>
-   <property name="available_expr">object/@@fullcalendar_tool/enabled|nothing</property>
+   <property name="available_expr">object/@@fullcalendar_tool/enabled</property>
    <property name="permissions">
     <element value="plone.app.event: Import Ical" />
    </property>

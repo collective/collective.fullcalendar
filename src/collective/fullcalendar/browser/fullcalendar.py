@@ -1,22 +1,24 @@
 # -*- coding: utf-8 -*-
 from collective.fullcalendar import _
 from collective.fullcalendar.interfaces import IFullcalendarEnabled
-from plone.app.contenttypes.interfaces import ICollection
+from plone.app.contenttypes.behaviors.collection import ISyndicatableCollection
 from plone.app.event.base import AnnotationAdapter
 from plone.app.z3cform.widget import RelatedItemsFieldWidget
 from plone.autoform import directives
-from plone.folder.interfaces import IFolder
+from plone.dexterity.interfaces import IDexterityContainer
 from plone.z3cform.layout import FormWrapper
 from Products.Five.browser import BrowserView
 from Products.statusmessages.interfaces import IStatusMessage
 from z3c.form import button, field, form
 from z3c.relationfield.schema import RelationChoice
 from zope import schema
-from zope.component import adapter, provideAdapter
-from zope.interface import alsoProvides, implementer, Interface, noLongerProvides
-from zope.schema.vocabulary import SimpleTerm, SimpleVocabulary
 from zope.annotation.interfaces import IAnnotations
-from zope.annotation import factory
+from zope.interface import alsoProvides
+from zope.interface import implementer
+from zope.interface import Interface
+from zope.interface import noLongerProvides
+from zope.schema.vocabulary import SimpleTerm
+from zope.schema.vocabulary import SimpleVocabulary
 
 
 class IIFullcalendarSettings(Interface):
@@ -159,8 +161,6 @@ class IIFullcalendarSettings(Interface):
     )
 
 
-@adapter(ICollection)
-@adapter(IFolder)
 @implementer(IIFullcalendarSettings)
 class IFullcalendarSettings(AnnotationAdapter):
     """Annotation Adapter for IIFullcalendarSettings."""
@@ -194,15 +194,13 @@ class FullcalendarSettingsForm(form.EditForm):
 
 
 class IFullcalendarTool(BrowserView):
-    @property
+
     def available(self):
-        return IFolder.providedBy(self.context) or ICollection.providedBy(self.context)
+        return IDexterityContainer.providedBy(self.context) or ISyndicatableCollection.providedBy(self.context)
 
-    @property
     def available_disabled(self):
-        return self.available and not self.enabled
+        return self.available() and not self.enabled()
 
-    @property
     def enabled(self):
         return IFullcalendarEnabled.providedBy(self.context)
 

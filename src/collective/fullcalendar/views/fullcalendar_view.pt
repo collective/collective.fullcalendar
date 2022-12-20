@@ -7,13 +7,9 @@
 <body>
   <metal:block fill-slot="content-core">
 
-    <tal:debug tal:define="debug python:False;">
-        <div
-            tal:condition="debug"
-            tal:define="
-                settings view/get_settings;
-                config python:view.calendar_config();
-            ">
+    <tal:debug tal:condition="False">
+        <div tal:define="settings python: view.get_settings();
+                         config python:view.calendar_config();">
             <h2>settings made for this view</h2>
             <div tal:repeat="setting python:settings.keys()">
                 <div tal:content="python:f'{setting}: {settings[setting]}'">setting</div>
@@ -39,7 +35,7 @@
     </tal:add>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {            
+        document.addEventListener('DOMContentLoaded', function() {
             var calendarElement = document.getElementById('calendar');
             var calendarAddLink = document.getElementById('calendarAddLink');
             var calendarEditArea = $('#calendarEditArea');

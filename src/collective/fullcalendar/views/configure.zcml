@@ -4,8 +4,6 @@
     xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="collective.fullcalendar">
 
-  -*- extra stuff goes here -*-
-
   <browser:page
     name="edit-event"
     for="*"
