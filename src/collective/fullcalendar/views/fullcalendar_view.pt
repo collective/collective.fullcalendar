@@ -45,8 +45,6 @@
 
             calendar.render();
 
-
-            // Klick auf einen Slot. Bei Monatsansicht wird ganztägiger Termin erstellt, ansonsten Termin in Slotgröße
             calendar.on('dateClick', function(info) {
                 date = info.dateStr;
                 allDay = info.allDay;
@@ -60,7 +58,6 @@
                 calendarAddLink.click();
             });
 
-            // Auswahl eines Bereichs: Bei Monatsansicht werden mehrtägige Termine erstellt, ansonsten Termin in Bereichsgröße
             calendar.on('select', function(info) {
                 start = info.startStr;
                 end = info.endStr;
@@ -75,7 +72,6 @@
                 calendarAddLink.click();
             });
 
-            // Vergrößern/Verkleinern eines Termins
             calendar.on('eventResize', function(info) {
                 if (confirm("Do you want to change the event?")) {
                     window.location.href = "@@edit-event?method=resize&uid="+info.event.id+"&new_end="+info.event.end.toISOString();
@@ -84,7 +80,6 @@
                 }
             });
 
-            // Verschieben eines Termins
             calendar.on('eventDrop', function(info) {
                 if (confirm("Do you want to change the event?")) {
                     window.location.href = "@@edit-event?method=move&uid="+info.event.id+"&new_start="+info.event.start.toISOString()+"&new_end="+info.event.end.toISOString();

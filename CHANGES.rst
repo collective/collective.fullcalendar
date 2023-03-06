@@ -45,6 +45,8 @@ Changelog
 - Switch view on enable and disable
   [pbauer]
 
+- Remove german phrases
+  [wkbkhard]
 
 1.0a3
 ------------------

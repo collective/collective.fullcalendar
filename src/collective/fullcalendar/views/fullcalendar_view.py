@@ -113,13 +113,13 @@ class FullcalendarView(BrowserView):
         return result
 
     def get_time(self, time):
-        if time.isdigit():  # Volle Stunde
+        if time.isdigit():  # full hour
             timeInt = int(time)
             if timeInt < 10:
                 result = "0" + time + ":00"
             else:
                 result = time + ":00"
-        else:  # Krumme Angabe, z.B. '5:30'
+        else:  # half hour or other datetimes, e.g. '5:30'
             if len(time) == 4:
                 result = "0" + time
             else:

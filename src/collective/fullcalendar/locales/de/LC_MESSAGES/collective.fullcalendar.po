@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2021-03-11 16:10+0000\n"
+"POT-Creation-Date: 2022-12-22 12:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Janina Hard <janina.hard@werkbank.de>\n"
 "Language-Team: Werkbank GmbH <admin@werkbank.de>\n"
@@ -14,80 +14,178 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.fullcalendar\n"
 
-msgid "label_slot_length"
-msgstr "Länge des Zeitfensters"
+#: ../browser/fullcalendar.py:188
+msgid "Cancel"
+msgstr ""
 
-msgid "help_slot_length"
-msgstr "Länge des Zeitfensters in Minuten"
+#: ../browser/fullcalendar.py:190
+msgid "Changes canceled."
+msgstr ""
 
-msgid "label_allDay"
-msgstr "Ganzer Tag"
+#: ../browser/fullcalendar.py:185
+msgid "Changes saved."
+msgstr ""
 
+#: ../browser/fullcalendar.py:175
+msgid "Edit fullcalendar settings"
+msgstr ""
+
+#: ../configure.zcml:27
+msgid "Installs the collective.fullcalendar add-on."
+msgstr ""
+
+#: ../browser/fullcalendar.py:177
+msgid "Save"
+msgstr ""
+
+#: ../configure.zcml:36
+msgid "Uninstalls the collective.fullcalendar add-on."
+msgstr ""
+
+#: ../configure.zcml:27
+msgid "collective.fullcalendar"
+msgstr ""
+
+#: ../configure.zcml:36
+msgid "collective.fullcalendar (uninstall)"
+msgstr ""
+
+#. Default: "Event content_type to add"
+#: ../browser/fullcalendar.py:137
+msgid "event_type"
+msgstr ""
+
+#. Default: "Display \"All day\" option for timeGridWeek-View"
+#: ../browser/fullcalendar.py:34
 msgid "help_allDay"
 msgstr "Zeige 'Ganzer Tag' Option für timeGridWeek-View"
 
-msgid "label_defaultCalendarView"
-msgstr "Standard-Ansicht"
+#. Default: "Check this box if you want the events in the calendar to be editable."
+#: ../browser/fullcalendar.py:155
+msgid "help_caleditable"
+msgstr "Aktivieren Sie dieses Kontrollkästchen, wenn die Ereignisse im Kalender bearbeitet werden sollen."
 
-msgid "help_defaultCalendarView"
-msgstr "Standard View"
-
-msgid "label_headerLeft"
-msgstr "Kopfbereich links"
-
-msgid "help_headerLeft"
-msgstr "Mögliche Werte: title, prev, next, prevYear, nextYear, today, dayGridMonth, timeGridWeek, listWeek, dayGridWeek"
-
-msgid "label_headerRight"
-msgstr "Kopfbereich rechts"
-
-msgid "help_headerRight"
-msgstr "Mögliche Werte: title, prev, next, prevYear, nextYear, today, dayGridMonth, timeGridWeek, listWeek, dayGridWeek"
-
-msgid "label_weekends"
-msgstr "Wochenenden anzeigen"
-
-msgid "help_weekends"
-msgstr "Wochenenden anzeigen"
-
-msgid "label_firstDay"
-msgstr "Erster Wochentag"
-
-msgid "help_firstDay"
-msgstr "Erster Wochentag"
-
-msgid "label_firstHour"
-msgstr "Erste angezeigte Stunde"
-
-msgid "help_firstHour"
-msgstr "Legen Sie die anfängliche Scrollposition der Kalender-Tagesansicht fest (eine Zahl zwischen 0 und 23). Wenn vor dieser Zahl ein '+' oder '-' steht, wird die Zahl mit der aktuellen Zeit addiert bzw. substrahiert."
-
-msgid "label_minTime"
-msgstr "Erste sichtbare Stunde"
-
-msgid "help_minTime"
-msgstr "Wählen Sie die erste sichtbare Stunde des Kalenders (z.B. \'5\' oder \'5:30\')."
-
-msgid "label_maxTime"
-msgstr "Letzte sichtbare Stunde"
-
-msgid "help_maxTime"
-msgstr "Wählen Sie die letzte sichtbare Stunde des Kalenders (z.B. \'5\' oder \'5:30\')."
-
-msgid "label_target_folder"
-msgstr "Zielordner für neue Termine"
-
-msgid "help_target_folder"
-msgstr "Zielordner für neue Termine"
-
-msgid "label_calendarHeight"
-msgstr "Kalender Höhe"
-
+#. Default: "Calendar height in pixels"
+#: ../browser/fullcalendar.py:149
 msgid "help_calendarHeight"
 msgstr "Kalender Höhe in Pixeln"
 
+#. Default: "Standard View"
+#: ../browser/fullcalendar.py:42
+msgid "help_defaultCalendarView"
+msgstr "Standard View"
+
+#. Default: "Or leave blank for default event type 'Event'."
+#: ../browser/fullcalendar.py:138
+msgid "help_event_type"
+msgstr ""
+
+#. Default: "Choose the first day of the week."
+#: ../browser/fullcalendar.py:76
+msgid "help_firstDay"
+msgstr "Erster Wochentag"
+
+#. Default: "Set the starting calendar day view scroll position (a number between 0 and 23). If there is a \"+\" or \"-\" in front of this number, the number is added or subtracted with the current time."
+#: ../browser/fullcalendar.py:96
+msgid "help_firstHour"
+msgstr "Legen Sie die anfängliche Scrollposition der Kalender-Tagesansicht fest (eine Zahl zwischen 0 und 23). Wenn vor dieser Zahl ein '+' oder '-' steht, wird die Zahl mit der aktuellen Zeit addiert bzw. substrahiert."
+
+#. Default: "Possible values: title, prev, next, prevYear, nextYear, today, dayGridMonth, timeGridWeek, listWeek, dayGridWeek"
+#: ../browser/fullcalendar.py:52
+msgid "help_headerLeft"
+msgstr "Mögliche Werte: title, prev, next, prevYear, nextYear, today, dayGridMonth, timeGridWeek, listWeek, dayGridWeek"
+
+#. Default: "Possible values: title, prev, next, prevYear, nextYear, today, dayGridMonth, timeGridWeek, listWeek, dayGridWeek"
+#: ../browser/fullcalendar.py:61
+msgid "help_headerRight"
+msgstr "Mögliche Werte: title, prev, next, prevYear, nextYear, today, dayGridMonth, timeGridWeek, listWeek, dayGridWeek"
+
+#. Default: "Select the last visible hour of the calendar (e.g. '5' oder '5:30')."
+#: ../browser/fullcalendar.py:114
+msgid "help_maxTime"
+msgstr "Wählen Sie die letzte sichtbare Stunde des Kalenders (z.B. \'5\' oder \'5:30\')."
+
+#. Default: "Select the first visible hour of the calendar (e.g. '5' or '5:30')."
+#: ../browser/fullcalendar.py:105
+msgid "help_minTime"
+msgstr "Wählen Sie die erste sichtbare Stunde des Kalenders (z.B. \'5\' oder \'5:30\')."
+
+#. Default: "Slot length in minutes"
+#: ../browser/fullcalendar.py:28
+msgid "help_slot_length"
+msgstr "Länge des Zeitfensters in Minuten"
+
+#. Default: "Destination folder for new appointments"
+#: ../browser/fullcalendar.py:124
+msgid "help_target_folder"
+msgstr "Zielordner für neue Termine"
+
+#. Default: "Show weekends"
+#: ../browser/fullcalendar.py:70
+msgid "help_weekends"
+msgstr "Wochenenden anzeigen"
+
+#. Default: "All day"
+#: ../browser/fullcalendar.py:33
+msgid "label_allDay"
+msgstr "Ganzer Tag"
+
+#. Default: "Calendar editable"
+#: ../browser/fullcalendar.py:154
 msgid "label_caleditable"
 msgstr "Kalender bearbeitbar"
 
-msgid "help_caleditable"
-msgstr "Aktivieren Sie dieses Kontrollkästchen, wenn die Ereignisse im Kalender bearbeitet werden sollen."
+#. Default: "Calendar height"
+#: ../browser/fullcalendar.py:148
+msgid "label_calendarHeight"
+msgstr "Kalender Höhe"
+
+#. Default: "Standard View"
+#: ../browser/fullcalendar.py:41
+msgid "label_defaultCalendarView"
+msgstr "Standard-Ansicht"
+
+#. Default: "First day of the week"
+#: ../browser/fullcalendar.py:75
+msgid "label_firstDay"
+msgstr "Erster Wochentag"
+
+#. Default: "First visible hour"
+#: ../browser/fullcalendar.py:95
+msgid "label_firstHour"
+msgstr "Erste angezeigte Stunde"
+
+#. Default: "Head area left"
+#: ../browser/fullcalendar.py:51
+msgid "label_headerLeft"
+msgstr "Kopfbereich links"
+
+#. Default: "Head area right"
+#: ../browser/fullcalendar.py:60
+msgid "label_headerRight"
+msgstr "Kopfbereich rechts"
+
+#. Default: "Last visible hour"
+#: ../browser/fullcalendar.py:113
+msgid "label_maxTime"
+msgstr "Letzte sichtbare Stunde"
+
+#. Default: "First visible hour"
+#: ../browser/fullcalendar.py:104
+msgid "label_minTime"
+msgstr "Erste sichtbare Stunde"
+
+#. Default: "Slot length"
+#: ../browser/fullcalendar.py:27
+msgid "label_slot_length"
+msgstr "Länge des Zeitfensters"
+
+#. Default: "Destination folder for new appointments"
+#: ../browser/fullcalendar.py:123
+msgid "label_target_folder"
+msgstr "Zielordner für neue Termine"
+
+#. Default: "Show weekends"
+#: ../browser/fullcalendar.py:69
+msgid "label_weekends"
+msgstr "Wochenenden anzeigen"

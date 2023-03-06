@@ -48,32 +48,32 @@ class IIFullcalendarSettings(Interface):
     )
     # Possible for headerLeft/headerRight: title, prev, next, prevYear, nextYear, today, dayGridMonth, timeGridWeek, listWeek, dayGridWeek
     headerLeft = schema.TextLine(
-        title=_(u"label_headerLeft", default=u"Kopfbereich links"),
+        title=_(u"label_headerLeft", default=u"Head area left"),
         description=_(
             u"help_headerLeft",
-            default=u"Mögliche Werte: title, prev, next, prevYear, nextYear, today, dayGridMonth, timeGridWeek, listWeek, dayGridWeek",
+            default=u"Possible values: title, prev, next, prevYear, nextYear, today, dayGridMonth, timeGridWeek, listWeek, dayGridWeek",
         ),
         required=False,
         default="prev,next today",
     )
     headerRight = schema.TextLine(
-        title=_(u"label_headerRight", default=u"Kopfbereich rechts"),
+        title=_(u"label_headerRight", default=u"Head area right"),
         description=_(
             u"help_headerRight",
-            default=u"Mögliche Werte: title, prev, next, prevYear, nextYear, today, dayGridMonth, timeGridWeek, listWeek, dayGridWeek",
+            default=u"Possible values: title, prev, next, prevYear, nextYear, today, dayGridMonth, timeGridWeek, listWeek, dayGridWeek",
         ),
         required=False,
         default="dayGridMonth timeGridWeek listWeek",
     )
     weekends = schema.Bool(
-        title=_(u"label_weekends", default=u"Wochenenden anzeigen"),
-        description=_(u"help_weekends", default=u"Wochenenden anzeigen"),
+        title=_(u"label_weekends", default=u"Show weekends"),
+        description=_(u"help_weekends", default=u"Show weekends"),
         required=False,
         default=True,
     )
     firstDay = schema.Choice(
-        title=_(u"label_firstDay", default=u"Erster Wochentag"),
-        description=_(u"help_firstDay", default=u"Erster Wochentag"),
+        title=_(u"label_firstDay", default=u"First day of the week"),
+        description=_(u"help_firstDay", default=u"Choose the first day of the week."),
         required=True,
         vocabulary=SimpleVocabulary(
             [
@@ -92,36 +92,36 @@ class IIFullcalendarSettings(Interface):
         default=1,
     )
     firstHour = schema.TextLine(
-        title=_(u"label_firstHour", default=u"Erste angezeigte Stunde"),
+        title=_(u"label_firstHour", default=u"First visible hour"),
         description=_(
             u"help_firstHour",
-            default=u'Legen Sie die anfängliche Scrollposition der Kalender-Tagesansicht fest (eine Zahl zwischen 0 und 23). Wenn vor dieser Zahl ein "+" oder "-" steht, wird die Zahl mit der aktuellen Zeit addiert bzw. substrahiert.',
+            default=u'Set the starting calendar day view scroll position (a number between 0 and 23). If there is a "+" or "-" in front of this number, the number is added or subtracted with the current time.',
         ),
         required=True,
         default="6",
     )
     minTime = schema.TextLine(
-        title=_(u"label_minTime", default=u"Erste sichtbare Stunde"),
+        title=_(u"label_minTime", default=u"First visible hour"),
         description=_(
             u"help_minTime",
-            default=u"Wählen Sie die erste sichtbare Stunde des Kalenders (z.B. '5' oder '5:30').",
+            default=u"Select the first visible hour of the calendar (e.g. '5' or '5:30').",
         ),
         required=True,
         default="00:00:00",
     )
     maxTime = schema.TextLine(
-        title=_(u"label_maxTime", default=u"Letzte sichtbare Stunde"),
+        title=_(u"label_maxTime", default=u"Last visible hour"),
         description=_(
             u"help_maxTime",
-            default=u"Wählen Sie die letzte sichtbare Stunde des Kalenders (z.B. '5' oder '5:30').",
+            default=u"Select the last visible hour of the calendar (e.g. '5' oder '5:30').",
         ),
         required=True,
         default="24:00:00",
     )
     # Target for new events
     target_folder = RelationChoice(
-        title=_(u"label_target_folder", default=u"Zielordner für neue Termine"),
-        description=_(u"help_target_folder", default=u"Zielordner für neue Termine"),
+        title=_(u"label_target_folder", default=u"Destination folder for new appointments"),
+        description=_(u"help_target_folder", default=u"Destination folder for new appointments"),
         vocabulary="plone.app.vocabularies.Catalog",
         required=False,
     )
@@ -143,13 +143,13 @@ class IIFullcalendarSettings(Interface):
         required=False,
         default="Event",
     )
-    # Höhe des Kalenders
+    # Height of Calendar
     calendarHeight = schema.Int(
         title=_(u"label_calendarHeight", default=u"Calendar height"),
         description=_(u"help_calendarHeight", default=u"Calendar height in pixels"),
         required=False,
     )
-    # Bearbeitung von Terminen erlauben
+    # Enable editing on events
     caleditable = schema.Bool(
         title=_(u"label_caleditable", default=u"Calendar editable"),
         description=_(
