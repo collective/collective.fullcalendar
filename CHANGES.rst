@@ -6,6 +6,10 @@ Changelog
 
 - Remove invalid python_requires.
   [pbauer]
+- Added norwegian translation
+  [espenmn]
+- Added CSS class for publication class. CSS class will be 'state-published' etc.
+  [espenmn]
 
 
 1.0b2 (2021-12-11)
