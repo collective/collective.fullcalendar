@@ -10,13 +10,26 @@ from plone.dexterity.interfaces import IDexterityContainer
 from plone.event.interfaces import IEvent, IOccurrence
 from Products.Five.browser import BrowserView
 
+DEFAULT_SETTINGS = {
+    'slotMinutes': 30,
+    'allDay': True,
+    'defaultCalendarView': 'dayGridMonth',
+    'headerLeft': 'prev,next today',
+    'headerRight': 'dayGridMonth timeGridWeek listWeek',
+    'weekends': True,
+    'firstDay': 1, 'firstHour': '5',
+    'minTime': '00:00:00',
+    'maxTime': '24:00:00',
+    'event_type': 'Event',
+    'caleditable': False
+    }
 
 class FullcalendarView(BrowserView):
     def __call__(self):
         return self.index()
 
     def get_settings(self):
-        return IIFullcalendarSettings(self.context)._data
+        return IIFullcalendarSettings(self.context)._data or DEFAULT_SETTINGS
 
     def add_link(self):
         settings = self.get_settings()
