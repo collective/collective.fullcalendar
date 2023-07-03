@@ -54,7 +54,11 @@ class FullcalendarView(BrowserView):
             result["id"] = obj.UID()
             result["title"] = obj.Title()
             result["url"] = obj.absolute_url()
-            result["className"] = "state-{}".format(api.content.get_state(obj))
+            if IOccurrence.providedBy(obj):
+                state = api.content.get_state(obj.aq_parent)
+            else:
+                state = api.content.get_state(obj)
+            result["className"] = "state-{}".format(state)
             if obj.whole_day:
                 result["start"] = obj.start.strftime("%Y-%m-%d")
                 # Fullcalendar counts to end date 00:00
