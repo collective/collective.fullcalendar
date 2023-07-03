@@ -5,9 +5,9 @@ from datetime import timedelta
 from plone import api
 from plone.app.contenttypes.behaviors.collection import ISyndicatableCollection
 from plone.app.event.base import get_events
-from plone.app.event.base import RET_MODE_BRAINS
+from plone.app.event.base import RET_MODE_OBJECTS
 from plone.dexterity.interfaces import IDexterityContainer
-from plone.event.interfaces import IEvent
+from plone.event.interfaces import IEvent, IOccurrence
 from Products.Five.browser import BrowserView
 
 
@@ -44,17 +44,21 @@ class FullcalendarView(BrowserView):
             # Do not limit and batch results...
             custom_query = {'object_provides': IEvent.__identifier__}
             brains = self.context.results(batch=False, custom_query=custom_query, limit=10000)
+            objects = [brain.getObject() for brain in brains]
         elif IDexterityContainer.providedBy(self.context):
             path = "/".join(self.context.getPhysicalPath())
-            brains = get_events(self.context, expand=True, path=path)
+            objects = get_events(self.context, ret_mode=RET_MODE_OBJECTS, expand=True, path=path)
         results = []
-        for brain in brains:
+        for obj in objects:
             result = {}
-            obj = brain.getObject()
             result["id"] = obj.UID()
             result["title"] = obj.Title()
             result["url"] = obj.absolute_url()
-            result["className"] = "state-{}".format(api.content.get_state(obj))
+            if IOccurrence.providedBy(obj):
+                state = api.content.get_state(obj.aq_parent)
+            else:
+                state = api.content.get_state(obj)
+            result["className"] = "state-{}".format(state)
             if obj.whole_day:
                 result["start"] = obj.start.strftime("%Y-%m-%d")
                 # Fullcalendar counts to end date 00:00
