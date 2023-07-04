@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.0b3 (unreleased)
-------------------
+1.2 (2023-07-04)
+----------------
 
 - Remove invalid python_requires.
   [pbauer]
