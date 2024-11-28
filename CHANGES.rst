@@ -4,7 +4,8 @@ Changelog
 1.3 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- fix unhashable type: dict in Plone 6.1
+  [MrTango]
 
 
 1.2 (2023-07-04)

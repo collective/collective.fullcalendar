@@ -10,6 +10,8 @@ from plone.dexterity.interfaces import IDexterityContainer
 from plone.event.interfaces import IEvent, IOccurrence
 from Products.Five.browser import BrowserView
 
+import json
+
 
 class FullcalendarView(BrowserView):
     def __call__(self):
@@ -167,4 +169,4 @@ class FullcalendarView(BrowserView):
             if settings.get("calendarHeight")
             else 750,
         }
-        return configuration
+        return json.dumps(configuration)
