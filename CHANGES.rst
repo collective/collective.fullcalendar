@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.3 (unreleased)
+1.3 (2024-11-29)
 ----------------
 
 - fix unhashable type: dict in Plone 6.1
