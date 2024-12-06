@@ -155,7 +155,9 @@ class IIFullcalendarSettings(Interface):
     # Height of Calendar
     calendarHeight = schema.Int(
         title=_(u"label_calendarHeight", default=u"Calendar height"),
-        description=_(u"help_calendarHeight", default=u"Calendar height in pixels"),
+        description=_(
+            u"help_calendarHeight",
+            default=u"Calendar height in pixels. If left empty, the calendar will adjust its height based on the content."),
         required=False,
     )
     # Enable editing on events

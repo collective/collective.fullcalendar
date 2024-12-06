@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2024-12-06 09:20+0000\n"
+"POT-Creation-Date: 2024-12-06 14:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,19 +17,19 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.fullcalendar\n"
 
-#: ../browser/fullcalendar.py:197
+#: ../browser/fullcalendar.py:199
 msgid "Cancel"
 msgstr ""
 
-#: ../browser/fullcalendar.py:199
+#: ../browser/fullcalendar.py:201
 msgid "Changes canceled."
 msgstr ""
 
-#: ../browser/fullcalendar.py:194
+#: ../browser/fullcalendar.py:196
 msgid "Changes saved."
 msgstr ""
 
-#: ../browser/fullcalendar.py:184
+#: ../browser/fullcalendar.py:186
 msgid "Edit fullcalendar settings"
 msgstr ""
 
@@ -37,7 +37,7 @@ msgstr ""
 msgid "Installs the collective.fullcalendar add-on."
 msgstr ""
 
-#: ../browser/fullcalendar.py:186
+#: ../browser/fullcalendar.py:188
 msgid "Save"
 msgstr ""
 
@@ -64,11 +64,11 @@ msgid "help_allDay"
 msgstr ""
 
 #. Default: "Check this box if you want the events in the calendar to be editable."
-#: ../browser/fullcalendar.py:164
+#: ../browser/fullcalendar.py:166
 msgid "help_caleditable"
 msgstr ""
 
-#. Default: "Calendar height in pixels"
+#. Default: "Calendar height in pixels. If left empty, the calendar will adjust its height based on the content."
 #: ../browser/fullcalendar.py:158
 msgid "help_calendarHeight"
 msgstr ""
@@ -134,7 +134,7 @@ msgid "label_allDay"
 msgstr ""
 
 #. Default: "Calendar editable"
-#: ../browser/fullcalendar.py:163
+#: ../browser/fullcalendar.py:165
 msgid "label_caleditable"
 msgstr ""
 
