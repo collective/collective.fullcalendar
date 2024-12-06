@@ -22,7 +22,6 @@ from zope.schema.vocabulary import SimpleVocabulary
 
 
 class IIFullcalendarSettings(Interface):
-
     slotMinutes = schema.Int(
         title=_(u"label_slot_length", default=u"Slot length"),
         description=_(u"help_slot_length", default=u"Slot length in minutes"),
@@ -42,7 +41,13 @@ class IIFullcalendarSettings(Interface):
         description=_(u"help_defaultCalendarView", default=u"Standard View"),
         required=True,
         vocabulary=SimpleVocabulary.fromValues(
-            ["dayGridMonth", "timeGridWeek", "listWeek", "dayGridWeek"]
+            [
+                "dayGridMonth",
+                "timeGridWeek",
+                "listWeek",
+                "dayGridWeek",
+                "multiMonthYear",
+            ]
         ),
         default="dayGridMonth",
     )
@@ -51,7 +56,7 @@ class IIFullcalendarSettings(Interface):
         title=_(u"label_headerLeft", default=u"Head area left"),
         description=_(
             u"help_headerLeft",
-            default=u"Possible values: title, prev, next, prevYear, nextYear, today, dayGridMonth, timeGridWeek, listWeek, dayGridWeek",
+            default=u"Possible values: title, prev, next, prevYear, nextYear, today, dayGridMonth, timeGridWeek, listWeek, dayGridWeek, multiMonthYear",
         ),
         required=False,
         default="prev,next today",
@@ -60,10 +65,10 @@ class IIFullcalendarSettings(Interface):
         title=_(u"label_headerRight", default=u"Head area right"),
         description=_(
             u"help_headerRight",
-            default=u"Possible values: title, prev, next, prevYear, nextYear, today, dayGridMonth, timeGridWeek, listWeek, dayGridWeek",
+            default=u"Possible values: title, prev, next, prevYear, nextYear, today, dayGridMonth, timeGridWeek, listWeek, dayGridWeek, multiMonthYear",
         ),
         required=False,
-        default="dayGridMonth timeGridWeek listWeek",
+        default="dayGridMonth timeGridWeek listWeek multiMonthYear",
     )
     weekends = schema.Bool(
         title=_(u"label_weekends", default=u"Show weekends"),
@@ -120,8 +125,12 @@ class IIFullcalendarSettings(Interface):
     )
     # Target for new events
     target_folder = RelationChoice(
-        title=_(u"label_target_folder", default=u"Destination folder for new appointments"),
-        description=_(u"help_target_folder", default=u"Destination folder for new appointments"),
+        title=_(
+            u"label_target_folder", default=u"Destination folder for new appointments"
+        ),
+        description=_(
+            u"help_target_folder", default=u"Destination folder for new appointments"
+        ),
         vocabulary="plone.app.vocabularies.Catalog",
         required=False,
     )
@@ -194,9 +203,10 @@ class FullcalendarSettingsForm(form.EditForm):
 
 
 class IFullcalendarTool(BrowserView):
-
     def available(self):
-        return IDexterityContainer.providedBy(self.context) or ISyndicatableCollection.providedBy(self.context)
+        return IDexterityContainer.providedBy(
+            self.context
+        ) or ISyndicatableCollection.providedBy(self.context)
 
     def available_disabled(self):
         return self.available() and not self.enabled()

@@ -1,0 +1,25 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+  xmlns:gs="http://namespaces.zope.org/genericsetup">
+
+  <gs:registerProfile name="1001"
+    title="Upgrade to FullCalendar v6"
+    directory="1001"
+    description='Configuration for version 1001'
+    for="Products.CMFPlone.interfaces.IMigratingPloneSiteRoot"
+    provides="Products.GenericSetup.interfaces.EXTENSION" />
+
+  <gs:upgradeSteps source="1000"
+    destination="1001"
+    profile="collective.fullcalendar:default">
+
+    <gs:upgradeStep title="Upgrade to FullCalendar v6"
+      description="Update resource registry for FullCalendar v6 and remove CSS dependency"
+      handler=".v1001.upgrade" />
+
+    <gs:upgradeDepends title="Upgrade to FullCalendar v6 (GS profile)"
+      description="Update resource registry for FullCalendar v6 and remove CSS dependency"
+      import_profile="collective.fullcalendar.upgrades:1001" />
+
+  </gs:upgradeSteps>
+
+</configure>
