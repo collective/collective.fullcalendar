@@ -4,7 +4,8 @@ Changelog
 1.4 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Upgrade FullCalendar to v6.1.15. Integrate year (multi month) view.
+  [kreafox]
 
 
 1.3 (2024-11-29)
