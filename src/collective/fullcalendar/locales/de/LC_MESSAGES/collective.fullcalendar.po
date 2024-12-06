@@ -16,19 +16,19 @@ msgstr ""
 
 #: ../browser/fullcalendar.py:199
 msgid "Cancel"
-msgstr ""
+msgstr "Abbrechen"
 
 #: ../browser/fullcalendar.py:201
 msgid "Changes canceled."
-msgstr ""
+msgstr "Änderungen verworfen"
 
 #: ../browser/fullcalendar.py:196
 msgid "Changes saved."
-msgstr ""
+msgstr "Änderungen gespeichert"
 
 #: ../browser/fullcalendar.py:186
 msgid "Edit fullcalendar settings"
-msgstr ""
+msgstr "Fullcanlendar Einstellungen bearbeiten"
 
 #: ../configure.zcml:27
 msgid "Installs the collective.fullcalendar add-on."
@@ -36,7 +36,7 @@ msgstr ""
 
 #: ../browser/fullcalendar.py:188
 msgid "Save"
-msgstr ""
+msgstr "Speichern"
 
 #: ../configure.zcml:36
 msgid "Uninstalls the collective.fullcalendar add-on."
@@ -53,7 +53,7 @@ msgstr ""
 #. Default: "Event content_type to add"
 #: ../browser/fullcalendar.py:146
 msgid "event_type"
-msgstr ""
+msgstr "Termin content_type anzulegen"
 
 #. Default: "Display \"All day\" option for timeGridWeek-View"
 #: ../browser/fullcalendar.py:33
@@ -78,7 +78,7 @@ msgstr "Standard View"
 #. Default: "Or leave blank for default event type 'Event'."
 #: ../browser/fullcalendar.py:147
 msgid "help_event_type"
-msgstr ""
+msgstr "Oder leer lassen um den Standard Termin zu verwenden."
 
 #. Default: "Choose the first day of the week."
 #: ../browser/fullcalendar.py:81
