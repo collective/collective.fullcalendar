@@ -6,6 +6,8 @@ Changelog
 
 - Upgrade FullCalendar to v6.1.15. Integrate year (multi month) view.
   [kreafox]
+- Refactor getting JS variable from Plone Python class method.
+  [ksuess]
 
 
 1.3 (2024-11-29)

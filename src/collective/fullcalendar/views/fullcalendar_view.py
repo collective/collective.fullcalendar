@@ -44,12 +44,16 @@ class FullcalendarView(BrowserView):
         if ISyndicatableCollection.providedBy(self.context):
             # Filter out non-events. Assume all event-types provde IEvent
             # Do not limit and batch results...
-            custom_query = {'object_provides': IEvent.__identifier__}
-            brains = self.context.results(batch=False, custom_query=custom_query, limit=10000)
+            custom_query = {"object_provides": IEvent.__identifier__}
+            brains = self.context.results(
+                batch=False, custom_query=custom_query, limit=10000
+            )
             objects = [brain.getObject() for brain in brains]
         elif IDexterityContainer.providedBy(self.context):
             path = "/".join(self.context.getPhysicalPath())
-            objects = get_events(self.context, ret_mode=RET_MODE_OBJECTS, expand=True, path=path)
+            objects = get_events(
+                self.context, ret_mode=RET_MODE_OBJECTS, expand=True, path=path
+            )
         results = []
         for obj in objects:
             result = {}
@@ -165,8 +169,10 @@ class FullcalendarView(BrowserView):
             "scrollTime": self.get_first_hour(),
             "slotMinTime": settings.get("minTime"),
             "slotMaxTime": settings.get("maxTime"),
-            "height": settings.get("calendarHeight")
-            if settings.get("calendarHeight")
-            else 750,
+            "height": (
+                settings.get("calendarHeight")
+                if settings.get("calendarHeight")
+                else 750
+            ),
         }
-        return json.dumps(configuration)
+        return configuration
