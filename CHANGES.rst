@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.6 (UNRELEASED)
+----------------
+
+- make sure that actions are removed when addon is uninstalled, to prevent portal to be broken
+  [MrTango]
 1.5 (2024-12-06)
 ----------------
 

@@ -5,4 +5,5 @@ global-exclude *.pyc
 include *.GPL
 include *.txt
 include *.yml
+include *.xml
 include tox.ini
