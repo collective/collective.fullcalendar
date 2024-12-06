@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.5 (unreleased)
+1.5 (2024-12-06)
 ----------------
 
 - Upgrade FullCalendar to v6.1.15. Integrate year (multi month) view.
