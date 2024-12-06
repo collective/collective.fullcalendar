@@ -1,7 +1,17 @@
 Changelog
 =========
 
-1.5 (unreleased)
+1.6 (UNRELEASED)
+----------------
+
+- make sure that actions are removed when addon is uninstalled, to prevent portal to be broken
+  [MrTango]
+
+- make sure resources are removed when addon is uninstalled
+  [MrTango]
+
+
+1.5 (2024-12-06)
 ----------------
 
 - Upgrade FullCalendar to v6.1.15. Integrate year (multi month) view.
