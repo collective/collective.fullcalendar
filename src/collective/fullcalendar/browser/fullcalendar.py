@@ -42,11 +42,11 @@ class IIFullcalendarSettings(Interface):
         required=True,
         vocabulary=SimpleVocabulary.fromValues(
             [
+                "multiMonthYear",
                 "dayGridMonth",
                 "timeGridWeek",
                 "listWeek",
                 "dayGridWeek",
-                "multiMonthYear",
             ]
         ),
         default="dayGridMonth",
@@ -68,7 +68,7 @@ class IIFullcalendarSettings(Interface):
             default=u"Possible values: title, prev, next, prevYear, nextYear, today, dayGridMonth, timeGridWeek, listWeek, dayGridWeek, multiMonthYear",
         ),
         required=False,
-        default="dayGridMonth timeGridWeek listWeek multiMonthYear",
+        default="multiMonthYear dayGridMonth timeGridWeek listWeek",
     )
     weekends = schema.Bool(
         title=_(u"label_weekends", default=u"Show weekends"),
