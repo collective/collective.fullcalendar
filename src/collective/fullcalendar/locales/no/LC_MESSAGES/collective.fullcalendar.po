@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2024-12-06 14:10+0000\n"
+"POT-Creation-Date: 2024-12-06 14:29+0000\n"
 "PO-Revision-Date: 2023-06-27 12:27+0200\n"
 "Last-Translator: espenm <post@medialog.no>\n"
 "Language-Team: Espen Moe-Nilssen\n"

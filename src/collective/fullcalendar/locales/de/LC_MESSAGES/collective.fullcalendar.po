@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2024-12-06 14:10+0000\n"
+"POT-Creation-Date: 2024-12-06 14:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Janina Hard <janina.hard@werkbank.de>\n"
 "Language-Team: Werkbank GmbH <admin@werkbank.de>\n"
@@ -68,7 +68,7 @@ msgstr "Aktivieren Sie dieses Kontrollkästchen, wenn die Ereignisse im Kalender
 #. Default: "Calendar height in pixels. If left empty, the calendar will adjust its height based on the content."
 #: ../browser/fullcalendar.py:158
 msgid "help_calendarHeight"
-msgstr "Kalenderhöhe in Pixeln. Wenn leer gelassen, passt sich die Höhe des Kalenders basierend auf dem Inhalt an."
+msgstr "Kalender Höhe in Pixeln. Wenn leer gelassen, passt sich die Höhe des Kalenders basierend auf dem Inhalt an."
 
 #. Default: "Standard View"
 #: ../browser/fullcalendar.py:41
