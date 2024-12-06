@@ -6,6 +6,11 @@ Changelog
 
 - make sure that actions are removed when addon is uninstalled, to prevent portal to be broken
   [MrTango]
+
+- make sure resources are removed when addon is uninstalled
+  [MrTango]
+
+
 1.5 (2024-12-06)
 ----------------
 
