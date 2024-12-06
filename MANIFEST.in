@@ -2,6 +2,7 @@ graft src/collective
 graft docs
 include *.rst
 global-exclude *.pyc
+global-exclude *.robot
 include *.GPL
 include *.txt
 include *.yml
