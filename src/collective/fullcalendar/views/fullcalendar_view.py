@@ -175,4 +175,4 @@ class FullcalendarView(BrowserView):
                 else 750
             ),
         }
-        return json.dumps(configuration)
+        return configuration

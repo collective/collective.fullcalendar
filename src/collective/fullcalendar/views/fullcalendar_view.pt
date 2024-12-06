@@ -34,14 +34,18 @@
             >+</a>
     </tal:add>
 
-    <script>
+    <script type="text/javascript"
+        tal:content="
+            python:f'var plone_calendar_config={view.calendar_config()};'">
+    </script>
+
+    <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function() {
             var calendarElement = document.getElementById('calendar');
             var calendarAddLink = document.getElementById('calendarAddLink');
             var calendarEditArea = $('#calendarEditArea');
-            var parentURL = '<tal:block tal:content="structure python:context.aq_parent.absolute_url()" />';
 
-            var calendar = new FullCalendar.Calendar(calendarElement, <tal:block tal:content="structure python:view.calendar_config()" />);
+            var calendar = new FullCalendar.Calendar(calendarElement, plone_calendar_config);
 
             calendar.render();
 
