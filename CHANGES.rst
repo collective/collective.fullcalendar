@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.6 (UNRELEASED)
+1.5 (2024-12-06)
 ----------------
 
 - make sure that actions are removed when addon is uninstalled, to prevent portal to be broken
