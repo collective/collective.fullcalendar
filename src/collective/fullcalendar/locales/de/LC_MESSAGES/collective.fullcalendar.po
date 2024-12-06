@@ -53,7 +53,7 @@ msgstr ""
 #. Default: "Event content_type to add"
 #: ../browser/fullcalendar.py:146
 msgid "event_type"
-msgstr "Termin content_type anzulegen"
+msgstr "Anzulegender Termin content_type"
 
 #. Default: "Display \"All day\" option for timeGridWeek-View"
 #: ../browser/fullcalendar.py:33
