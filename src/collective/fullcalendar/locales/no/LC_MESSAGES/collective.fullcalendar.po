@@ -1,11 +1,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2022-12-22 12:09+0000\n"
+"POT-Creation-Date: 2024-12-06 09:20+0000\n"
 "PO-Revision-Date: 2023-06-27 12:27+0200\n"
 "Last-Translator: espenm <post@medialog.no>\n"
 "Language-Team: Espen Moe-Nilssen\n"
-"Language: norsk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -14,21 +13,22 @@ msgstr ""
 "Language-Name: German\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.fullcalendar\n"
+"Language: norsk\n"
 "X-Generator: Poedit 3.2\n"
 
-#: ../browser/fullcalendar.py:188
+#: ../browser/fullcalendar.py:197
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: ../browser/fullcalendar.py:190
+#: ../browser/fullcalendar.py:199
 msgid "Changes canceled."
 msgstr "Endringer avbrutt"
 
-#: ../browser/fullcalendar.py:185
+#: ../browser/fullcalendar.py:194
 msgid "Changes saved."
 msgstr "Endringer lagret"
 
-#: ../browser/fullcalendar.py:175
+#: ../browser/fullcalendar.py:184
 msgid "Edit fullcalendar settings"
 msgstr "Rediger fullkalenderinnstillinger"
 
@@ -36,7 +36,7 @@ msgstr "Rediger fullkalenderinnstillinger"
 msgid "Installs the collective.fullcalendar add-on."
 msgstr "Installerer collective.fullcalendar"
 
-#: ../browser/fullcalendar.py:177
+#: ../browser/fullcalendar.py:186
 msgid "Save"
 msgstr "Lagre"
 
@@ -53,141 +53,141 @@ msgid "collective.fullcalendar (uninstall)"
 msgstr "Avinstallerer collective.fullcalendar-tillegget."
 
 #. Default: "Event content_type to add"
-#: ../browser/fullcalendar.py:137
+#: ../browser/fullcalendar.py:146
 msgid "event_type"
 msgstr ""
 
 #. Default: "Display \"All day\" option for timeGridWeek-View"
-#: ../browser/fullcalendar.py:34
+#: ../browser/fullcalendar.py:33
 msgid "help_allDay"
 msgstr "Vis alternativet «Hele dagen» for timeGridWeek-visning"
 
 #. Default: "Check this box if you want the events in the calendar to be editable."
-#: ../browser/fullcalendar.py:155
+#: ../browser/fullcalendar.py:164
 msgid "help_caleditable"
 msgstr "Kryss av i denne boksen hvis du vil at hendelsene skal redigeres i kalenderen."
 
 #. Default: "Calendar height in pixels"
-#: ../browser/fullcalendar.py:149
+#: ../browser/fullcalendar.py:158
 msgid "help_calendarHeight"
 msgstr "Kalenderhøyde i piksler"
 
 #. Default: "Standard View"
-#: ../browser/fullcalendar.py:42
+#: ../browser/fullcalendar.py:41
 msgid "help_defaultCalendarView"
 msgstr "Standardvisning"
 
 #. Default: "Or leave blank for default event type 'Event'."
-#: ../browser/fullcalendar.py:138
+#: ../browser/fullcalendar.py:147
 msgid "help_event_type"
 msgstr ""
 
 #. Default: "Choose the first day of the week."
-#: ../browser/fullcalendar.py:76
+#: ../browser/fullcalendar.py:81
 msgid "help_firstDay"
 msgstr "Første dag i uken"
 
 #. Default: "Set the starting calendar day view scroll position (a number between 0 and 23). If there is a \"+\" or \"-\" in front of this number, the number is added or subtracted with the current time."
-#: ../browser/fullcalendar.py:96
+#: ../browser/fullcalendar.py:101
 msgid "help_firstHour"
 msgstr "Angi den første rulleposisjonen for kalenderdagsvisningen (et tall mellom 0 og 23). Hvis dette tallet innledes med et ‘+’ eller ‘-‘, legges tallet til eller trekkes fra gjeldende tidspunkt."
 
-#. Default: "Possible values: title, prev, next, prevYear, nextYear, today, dayGridMonth, timeGridWeek, listWeek, dayGridWeek"
-#: ../browser/fullcalendar.py:52
+#. Default: "Possible values: title, prev, next, prevYear, nextYear, today, dayGridMonth, timeGridWeek, listWeek, dayGridWeek, multiMonthYear"
+#: ../browser/fullcalendar.py:57
 msgid "help_headerLeft"
-msgstr "Mulig: title, prev, next, prevYear, nextYear, today, dayGridMonth, timeGridWeek, listWeek, dayGridWeek"
+msgstr "Mulig: title, prev, next, prevYear, nextYear, today, dayGridMonth, timeGridWeek, listWeek, dayGridWeek, multiMonthYear"
 
-#. Default: "Possible values: title, prev, next, prevYear, nextYear, today, dayGridMonth, timeGridWeek, listWeek, dayGridWeek"
-#: ../browser/fullcalendar.py:61
+#. Default: "Possible values: title, prev, next, prevYear, nextYear, today, dayGridMonth, timeGridWeek, listWeek, dayGridWeek, multiMonthYear"
+#: ../browser/fullcalendar.py:66
 msgid "help_headerRight"
-msgstr "Mulig: title, prev, next, prevYear, nextYear, today, dayGridMonth, timeGridWeek, listWeek, dayGridWeek"
+msgstr "Mulig: title, prev, next, prevYear, nextYear, today, dayGridMonth, timeGridWeek, listWeek, dayGridWeek, multiMonthYear"
 
 #. Default: "Select the last visible hour of the calendar (e.g. '5' oder '5:30')."
-#: ../browser/fullcalendar.py:114
+#: ../browser/fullcalendar.py:119
 msgid "help_maxTime"
 msgstr "Velg siste synlige timen i kalenderen (f.eks. «5» eller «5:30»)."
 
 #. Default: "Select the first visible hour of the calendar (e.g. '5' or '5:30')."
-#: ../browser/fullcalendar.py:105
+#: ../browser/fullcalendar.py:110
 msgid "help_minTime"
 msgstr "Velg første synlige timen i kalenderen (f.eks. «5» eller «5:30»)."
 
 #. Default: "Slot length in minutes"
-#: ../browser/fullcalendar.py:28
+#: ../browser/fullcalendar.py:27
 msgid "help_slot_length"
 msgstr "Lengden på tidsvinduet i minutter"
 
 #. Default: "Destination folder for new appointments"
-#: ../browser/fullcalendar.py:124
+#: ../browser/fullcalendar.py:131
 msgid "help_target_folder"
 msgstr "Destinasjonsmappe for nye avtaler"
 
 #. Default: "Show weekends"
-#: ../browser/fullcalendar.py:70
+#: ../browser/fullcalendar.py:75
 msgid "help_weekends"
 msgstr "Vis helger"
 
 #. Default: "All day"
-#: ../browser/fullcalendar.py:33
+#: ../browser/fullcalendar.py:32
 msgid "label_allDay"
 msgstr "Hele dagen"
 
 #. Default: "Calendar editable"
-#: ../browser/fullcalendar.py:154
+#: ../browser/fullcalendar.py:163
 msgid "label_caleditable"
 msgstr "Kalender redigerbar"
 
 #. Default: "Calendar height"
-#: ../browser/fullcalendar.py:148
+#: ../browser/fullcalendar.py:157
 msgid "label_calendarHeight"
 msgstr "Kalenderhøyde"
 
 #. Default: "Standard View"
-#: ../browser/fullcalendar.py:41
+#: ../browser/fullcalendar.py:40
 msgid "label_defaultCalendarView"
 msgstr "Standardvisning"
 
 #. Default: "First day of the week"
-#: ../browser/fullcalendar.py:75
+#: ../browser/fullcalendar.py:80
 msgid "label_firstDay"
 msgstr "Første dag i uken"
 
 #. Default: "First visible hour"
-#: ../browser/fullcalendar.py:95
+#: ../browser/fullcalendar.py:100
 msgid "label_firstHour"
 msgstr "Første time vist"
 
 #. Default: "Head area left"
-#: ../browser/fullcalendar.py:51
+#: ../browser/fullcalendar.py:56
 msgid "label_headerLeft"
 msgstr "Overskrift venstre"
 
 #. Default: "Head area right"
-#: ../browser/fullcalendar.py:60
+#: ../browser/fullcalendar.py:65
 msgid "label_headerRight"
 msgstr "Overskrift til høyre"
 
 #. Default: "Last visible hour"
-#: ../browser/fullcalendar.py:113
+#: ../browser/fullcalendar.py:118
 msgid "label_maxTime"
 msgstr "Siste synlige time"
 
 #. Default: "First visible hour"
-#: ../browser/fullcalendar.py:104
+#: ../browser/fullcalendar.py:109
 msgid "label_minTime"
 msgstr "Første synlige time"
 
 #. Default: "Slot length"
-#: ../browser/fullcalendar.py:27
+#: ../browser/fullcalendar.py:26
 msgid "label_slot_length"
 msgstr "Lengde på tidsvinduet"
 
 #. Default: "Destination folder for new appointments"
-#: ../browser/fullcalendar.py:123
+#: ../browser/fullcalendar.py:128
 msgid "label_target_folder"
 msgstr "Destinasjonsmappe for nye avtaler"
 
 #. Default: "Show weekends"
-#: ../browser/fullcalendar.py:69
+#: ../browser/fullcalendar.py:74
 msgid "label_weekends"
 msgstr "Vis helger"
