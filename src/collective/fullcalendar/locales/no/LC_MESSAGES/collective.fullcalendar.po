@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2024-12-06 09:20+0000\n"
+"POT-Creation-Date: 2024-12-06 14:29+0000\n"
 "PO-Revision-Date: 2023-06-27 12:27+0200\n"
 "Last-Translator: espenm <post@medialog.no>\n"
 "Language-Team: Espen Moe-Nilssen\n"
@@ -16,19 +16,19 @@ msgstr ""
 "Language: norsk\n"
 "X-Generator: Poedit 3.2\n"
 
-#: ../browser/fullcalendar.py:197
+#: ../browser/fullcalendar.py:199
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: ../browser/fullcalendar.py:199
+#: ../browser/fullcalendar.py:201
 msgid "Changes canceled."
 msgstr "Endringer avbrutt"
 
-#: ../browser/fullcalendar.py:194
+#: ../browser/fullcalendar.py:196
 msgid "Changes saved."
 msgstr "Endringer lagret"
 
-#: ../browser/fullcalendar.py:184
+#: ../browser/fullcalendar.py:186
 msgid "Edit fullcalendar settings"
 msgstr "Rediger fullkalenderinnstillinger"
 
@@ -36,7 +36,7 @@ msgstr "Rediger fullkalenderinnstillinger"
 msgid "Installs the collective.fullcalendar add-on."
 msgstr "Installerer collective.fullcalendar"
 
-#: ../browser/fullcalendar.py:186
+#: ../browser/fullcalendar.py:188
 msgid "Save"
 msgstr "Lagre"
 
@@ -63,14 +63,14 @@ msgid "help_allDay"
 msgstr "Vis alternativet «Hele dagen» for timeGridWeek-visning"
 
 #. Default: "Check this box if you want the events in the calendar to be editable."
-#: ../browser/fullcalendar.py:164
+#: ../browser/fullcalendar.py:166
 msgid "help_caleditable"
 msgstr "Kryss av i denne boksen hvis du vil at hendelsene skal redigeres i kalenderen."
 
-#. Default: "Calendar height in pixels"
+#. Default: "Calendar height in pixels. If left empty, the calendar will adjust its height based on the content."
 #: ../browser/fullcalendar.py:158
 msgid "help_calendarHeight"
-msgstr "Kalenderhøyde i piksler"
+msgstr "Kalenderhøyde i piksler. Hvis det står tomt, vil kalenderen justere høyden basert på innholdet."
 
 #. Default: "Standard View"
 #: ../browser/fullcalendar.py:41
@@ -133,7 +133,7 @@ msgid "label_allDay"
 msgstr "Hele dagen"
 
 #. Default: "Calendar editable"
-#: ../browser/fullcalendar.py:163
+#: ../browser/fullcalendar.py:165
 msgid "label_caleditable"
 msgstr "Kalender redigerbar"
 

@@ -4,16 +4,24 @@ Changelog
 1.5 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Upgrade FullCalendar to v6.1.15. Integrate year (multi month) view.
+  [kreafox]
+
+- Set default calendar height to auto for dynamic adjustment.
+  [kreafox]
+
+- Optimize default order of calendar views
+  [MrTango]
 
 
 1.4 (2024-12-06)
 ----------------
 
-- Upgrade FullCalendar to v6.1.15. Integrate year (multi month) view.
-  [kreafox]
 - Refactor getting JS variable from Plone Python class method.
   [ksuess]
+
+- fix unhashable type: dict in Plone 6.1
+  [MrTango]
 
 
 1.3 (2024-11-29)

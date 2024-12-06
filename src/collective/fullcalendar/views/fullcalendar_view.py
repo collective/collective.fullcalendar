@@ -172,7 +172,7 @@ class FullcalendarView(BrowserView):
             "height": (
                 settings.get("calendarHeight")
                 if settings.get("calendarHeight")
-                else 750
+                else "auto"
             ),
         }
         return configuration
