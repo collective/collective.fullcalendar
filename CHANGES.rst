@@ -4,7 +4,8 @@ Changelog
 1.5 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Set default calendar height to auto for dynamic adjustment.
+  [kreafox]
 
 
 1.4 (2024-12-06)
