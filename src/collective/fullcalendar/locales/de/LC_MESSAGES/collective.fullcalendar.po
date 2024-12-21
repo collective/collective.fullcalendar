@@ -28,7 +28,7 @@ msgstr "Änderungen gespeichert"
 
 #: ../browser/fullcalendar.py:186
 msgid "Edit fullcalendar settings"
-msgstr "Fullcanlendar Einstellungen bearbeiten"
+msgstr "Fullcalendar Einstellungen bearbeiten"
 
 #: ../configure.zcml:27
 msgid "Installs the collective.fullcalendar add-on."
